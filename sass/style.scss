@@ -1,0 +1,193 @@
+@import "normalize";
+@import "compass/css3";
+@import "compass/utilities";
+@import "variables";
+@import "core";
+@import "form_controls";
+@import "about";
+
+
+abbr[title] {
+    cursor: help;
+}
+
+.hidden {
+    display: none;
+}
+
+.right {
+    float: right;
+}
+
+.center {
+    text-align: center;
+}
+
+.font-large {
+    font-size: 1.75rem;
+}
+
+.header {
+    @include box-shadow(rgba($darkGray, .2) 0 .1rem .1rem);
+    @include background-image(linear-gradient($blue, $lightBlue));
+    height: 3.25rem;
+    margin: 0;
+    padding: .4rem;
+    border-bottom: .1rem solid darken($blue, 5%);
+}
+
+.titleContainer {
+    display: inline-block;
+    width: 190px;
+    margin: .25rem;
+    text-align: center;
+}
+
+.sitetitle {
+    @include text-shadow(rgba($blue, 0.5) .075rem .075rem .15rem);
+    @include transition(width 0.3s ease-out);
+    position: relative;
+    width: 150px;
+    margin: 0 auto;
+    padding-bottom: .5rem;
+    border-bottom: 3px solid #fff;
+    font: 2rem/.9rem serif;
+    color: #fff;
+    cursor: pointer;
+
+    &:hover {
+        width: 190px;
+    }
+    a:hover {
+        text-decoration: none;
+    }
+}
+
+.sitetitle:after,
+.sitetitle:before {
+    position: absolute;
+    content: '';
+    bottom: -10px;
+    display: block;
+    width: 0;
+    height: 0;
+}
+
+.sitetitle:after {
+    right: -9px;
+    border-top: 9px solid transparent;
+    border-bottom: 9px solid transparent;
+    border-left: 9px solid #fff;
+}
+
+.sitetitle:before {
+    left: -9px;
+    border-top: 9px solid transparent;
+    border-bottom: 9px solid transparent;
+    border-right: 9px solid #fff;
+}
+
+.data-entry {
+    display: inline-block;
+    text-align: center;
+}
+
+.button-row {
+    display: inline-block;
+}
+
+.show-width {
+    height: 1.9rem;
+    padding: .2rem;
+    color: $darkGray;
+    font-weight: bold;
+}
+
+.show-width:hover {
+    color: $black;
+}
+
+.show-width:focus,
+.show-width:active {
+    border: .1rem solid lighten($lightGray, 10%);
+    background: $white;
+    color: $black;
+    border-radius: .25rem;
+}
+
+.loading {
+    text-align: center;
+    display: none;
+    margin: 1rem auto;
+}
+
+.paused {
+    .btn-plus,
+    .btn-minus {
+        display: inline-block;
+    }
+}
+
+.resizerContainer {
+    position: relative;
+    padding-right: 20px;
+    padding-bottom: 20px;
+}
+
+.resizing {
+    .btn-pause,
+    .show-width {
+        display: inline-block;
+    }
+    .button-help,
+    .header,
+    .url-entry {
+        display: none;
+    }
+    .resizer {
+        padding-bottom: 3.1rem;
+    }
+
+    .resize-control {
+        @include box-shadow(rgba($darkGray, .2) 0 .1rem .1rem);
+        position: absolute;
+        z-index: 10;
+        content: '';
+        display: block;
+        width: 20px;
+        height: 20px;
+        border: 1px solid $blue;
+        border-radius: 50%;
+        background-color: $lightBlue;
+    }
+
+    .resize-control.horizontal {
+        top: 50%;
+        right: 10px;
+        margin-top: -10px;
+        cursor: ew-resize;
+    }
+
+    .resize-control.vertical {
+        left: 50%;
+        bottom: 10px;
+        margin-left: -10px;
+        cursor: ns-resize;
+    }
+
+    .data-entry {
+        margin: 0;
+        text-align: left;
+    }
+}
+
+body:not(.resizing) .currently-resizing
+body.resizing .not-resizing,
+body:not(.paused) .currently-paused,
+body.paused .not-paused {
+    display: none;
+}
+
+.not.resizing {
+
+}
