@@ -1,6 +1,4 @@
 @import "normalize";
-@import "compass/css3";
-@import "compass/utilities";
 @import "variables";
 @import "core";
 @import "form_controls";
@@ -28,8 +26,8 @@ abbr[title] {
 }
 
 .header {
-    @include box-shadow(rgba($darkGray, .2) 0 .1rem .1rem);
-    @include background-image(linear-gradient($blue, $lightBlue));
+    // @include box-shadow(rgba($dark_gray, .2) 0 .1rem .1rem);
+    // @include background-image(linear-gradient($blue, $lightBlue));
     height: 3.25rem;
     margin: 0;
     padding: .4rem;
@@ -44,15 +42,15 @@ abbr[title] {
 }
 
 .sitetitle {
-    @include text-shadow(rgba($blue, 0.5) .075rem .075rem .15rem);
-    @include transition(width 0.3s ease-out);
+    // @include text-shadow(rgba($blue, 0.5) .075rem .075rem .15rem);
+    // @include transition(width 0.3s ease-out);
     position: relative;
     width: 150px;
     margin: 0 auto;
     padding-bottom: .5rem;
-    border-bottom: 3px solid #fff;
+    border-bottom: 3px solid $white;
     font: 2rem/.9rem serif;
-    color: #fff;
+    color: $white;
     cursor: pointer;
 
     &:hover {
@@ -77,14 +75,14 @@ abbr[title] {
     right: -9px;
     border-top: 9px solid transparent;
     border-bottom: 9px solid transparent;
-    border-left: 9px solid #fff;
+    border-left: 9px solid $white;
 }
 
 .sitetitle:before {
     left: -9px;
     border-top: 9px solid transparent;
     border-bottom: 9px solid transparent;
-    border-right: 9px solid #fff;
+    border-right: 9px solid $white;
 }
 
 .data-entry {
@@ -99,7 +97,7 @@ abbr[title] {
 .show-width {
     height: 1.9rem;
     padding: .2rem;
-    color: $darkGray;
+    color: $dark_gray;
     font-weight: bold;
 }
 
@@ -109,7 +107,7 @@ abbr[title] {
 
 .show-width:focus,
 .show-width:active {
-    border: .1rem solid lighten($lightGray, 10%);
+    border: .1rem solid lighten($light_gray, 10%);
     background: $white;
     color: $black;
     border-radius: .25rem;
@@ -149,7 +147,7 @@ abbr[title] {
     }
 
     .resize-control {
-        @include box-shadow(rgba($darkGray, .2) 0 .1rem .1rem);
+        // @include box-shadow(rgba($dark_gray, .2) 0 .1rem .1rem);
         position: absolute;
         z-index: 10;
         content: '';
@@ -158,7 +156,7 @@ abbr[title] {
         height: 20px;
         border: 1px solid $blue;
         border-radius: 50%;
-        background-color: $lightBlue;
+        background-color: $light_blue;
     }
 
     .resize-control.horizontal {
@@ -181,7 +179,7 @@ abbr[title] {
     }
 }
 
-body:not(.resizing) .currently-resizing
+body:not(.resizing) .currently-resizing,
 body.resizing .not-resizing,
 body:not(.paused) .currently-paused,
 body.paused .not-paused {

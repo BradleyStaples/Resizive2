@@ -4,10 +4,10 @@
     min-width: 19rem;
     margin: 2rem auto;
     background: #f8f8f8;
-    color: $darkGray;
+    color: $dark_gray;
     border-radius: .25rem;
     padding: 1rem;
-    @include box-shadow(rgba($blue, .75) 0 0 .25rem);
+    // @include box-shadow(rgba($blue, .75) 0 0 .25rem);
 }
 
 .about {

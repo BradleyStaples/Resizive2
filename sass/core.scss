@@ -1,7 +1,7 @@
 *,
 *:before,
 *:after {
-    @include box-sizing(border-box);
+    box-sizing: border-box;
 }
 
 html, body {
@@ -23,14 +23,14 @@ body {
 }
 
 ::-moz-selection {
-    @include text-shadow(rgba($white, 0.5) .1rem .1rem 0);
-    background: $lightBlue;
+    // @include text-shadow(rgba($white, 0.5) .1rem .1rem 0);
+    background: $light_blue;
     color: $blue;
 }
 
 ::selection {
-    @include text-shadow(rgba($white, 0.5) .1rem .1rem 0);
-    background: $lightBlue;
+    // @include text-shadow(rgba($white, 0.5) .1rem .1rem 0);
+    background: $light_blue;
     color: $blue;
 }
 

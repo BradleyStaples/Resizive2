@@ -1,49 +1,54 @@
 {
-    "name": "resizive",
-    "version": "1.0.0",
-    "description": "A site for testing sizes for responively designed websites.",
-    "author": {
-        "name": "Bradley Staples",
-        "email": "the.bradley.staples@gmail.com",
-        "url": "http://bradleystapl.es"
-    },
-    "homepage": "http://resizive.com/",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/bradleystaples/resizive"
-    },
-    "bugs": {
-        "url": "https://github.com/bradleystaples/resizive/issues"
-    },
-    "keywords": [
-        "responsive",
-        "resize",
-        "breakpoints",
-        "media query",
-        "media queries"
-    ],
-    "main": "app.js",
-    "scripts": {
-        "start": "node ./bin/www"
-    },
-    "dependencies": {
-        "angular": "^1.3.15",
-        "body-parser": "^1.12.0",
-        "cookie-parser": "^1.3.4",
-        "debug": "^2.1.1",
-        "express": "^4.12.3",
-        "jade": "^1.9.2",
-        "mongoose": "^4.0.2",
-        "morgan": "^1.5.1",
-        "serve-favicon": "^2.2.0"
-    },
-    "devDependencies": {
-        "autoprefixer-core": "^5.1.11",
-        "gulp": "^3.8.11",
-        "node-sass": "^2.1.1",
-        "uglify-js": "^2.4.21"
-    },
-    "preferGlobal": false,
-    "private": true,
-    "license": "MIT"
+  "name": "resizive",
+  "version": "1.0.0",
+  "description": "A site for testing sizes for responively designed websites.",
+  "author": {
+    "name": "Bradley Staples",
+    "email": "the.bradley.staples@gmail.com",
+    "url": "http://bradleystapl.es"
+  },
+  "homepage": "http://resizive.com/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bradleystaples/resizive"
+  },
+  "bugs": {
+    "url": "https://github.com/bradleystaples/resizive/issues"
+  },
+  "keywords": [
+    "responsive",
+    "resize",
+    "breakpoints",
+    "media query",
+    "media queries"
+  ],
+  "main": "./bin/www",
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "angular": "^1.3.15",
+    "body-parser": "^1.12.0",
+    "cookie-parser": "^1.3.4",
+    "debug": "^2.1.1",
+    "express": "^4.12.3",
+    "jade": "^1.9.2",
+    "mongoose": "^4.0.2",
+    "morgan": "^1.5.1",
+    "serve-favicon": "^2.2.0"
+  },
+  "devDependencies": {
+    "connect-livereload": "^0.5.3",
+    "gulp": "^3.8.11",
+    "gulp-autoprefixer": "^2.2.0",
+    "gulp-minify-css": "^1.1.1",
+    "gulp-nodemon": "^2.0.3",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^1.3.3",
+    "tiny-lr": "^0.1.5",
+    "uglify-js": "^2.4.21"
+  },
+  "preferGlobal": false,
+  "private": true,
+  "license": "MIT"
 }
