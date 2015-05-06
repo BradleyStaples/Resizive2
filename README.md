@@ -6,4 +6,4 @@ An incredible tool that enables easier detection of content-based breakpoints fo
 
 ## Copyright
 
-Copyright (c) 2015 Bradley Staples. See [LICENSE](https://github.com/BradleyStaples/Resizive/blob/master/LICENSE) for details.
+Copyright (c) 2015 Bradley Staples. See [LICENSE](./LICENSE) for details.
