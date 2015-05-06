@@ -1,0 +1,16 @@
+extends layout
+
+block content
+    header(class='header')
+        div(class='titleContainer')
+            h1(class='sitetitle', title='Resize Responsive Websites') Resizive
+        div(class='data-entry')
+            input(type='url', class='url-entry', placeholder='Enter Website URL')
+            button (class='btn btn-load')
+                span L
+                oad
+            a(href='#', class='btn', data-template='about', data-class='preventKeyboard', title='Help &amp; About Resizive') ?
+            a(href='#', class='btn font-large', data-template='config', data-class='preventKeyboard', title='Set Config Data') &#9881;
+
+    div(class='page')
+        p(class='center') For best results, set your browser to the widest width you wish to check (or simply fullscreen/maximize it)
