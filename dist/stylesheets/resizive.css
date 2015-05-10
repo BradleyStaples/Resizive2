@@ -337,11 +337,13 @@ body {
   background-position: 0 0, 20px 20px; }
 
 ::-moz-selection {
+  text-shadow: rgba(255, 255, 255, 0.5) .1rem .1rem 0;
   background: #9ed2f5;
   color: #59b8f8; }
 
 ::selection {
-  background: #9ed2f5;
+  text-shadow: rgba(158, 210, 245, 0.5) .1rem .1rem 0;
+  background: #fff;
   color: #59b8f8; }
 
 a {
@@ -454,6 +456,9 @@ abbr[title] {
   font-size: 1.75rem; }
 
 .header {
+  box-shadow: rgba(51, 51, 51, 0.2) 0 .1rem .1rem;
+  background-image: -webkit-linear-gradient(top, #59b8f8, #9ed2f5);
+  background-image: linear-gradient(to bottom, #59b8f8, #9ed2f5);
   height: 3.25rem;
   margin: 0;
   padding: .4rem;
@@ -466,6 +471,9 @@ abbr[title] {
   text-align: center; }
 
 .sitetitle {
+  text-shadow: rgba(89, 184, 248, 0.5) .075rem .075rem .15rem;
+  -webkit-transition: width 0.3s ease-out;
+          transition: width 0.3s ease-out;
   position: relative;
   width: 150px;
   margin: 0 auto;
@@ -541,6 +549,7 @@ abbr[title] {
 .resizing .resizer {
   padding-bottom: 3.1rem; }
 .resizing .resize-control {
+  box-shadow: rgba(51, 51, 51, 0.2) 0 .1rem .1rem;
   position: absolute;
   z-index: 10;
   content: '';

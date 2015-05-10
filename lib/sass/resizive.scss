@@ -26,8 +26,8 @@ abbr[title] {
 }
 
 .header {
-    // @include box-shadow(rgba($dark_gray, .2) 0 .1rem .1rem);
-    // @include background-image(linear-gradient($blue, $lightBlue));
+    box-shadow: rgba($dark_gray, .2) 0 .1rem .1rem;
+    background-image: linear-gradient(to bottom, $blue, $light_blue);
     height: 3.25rem;
     margin: 0;
     padding: .4rem;
@@ -42,8 +42,8 @@ abbr[title] {
 }
 
 .sitetitle {
-    // @include text-shadow(rgba($blue, 0.5) .075rem .075rem .15rem);
-    // @include transition(width 0.3s ease-out);
+    text-shadow: rgba($blue, 0.5) .075rem .075rem .15rem;
+    transition: width 0.3s ease-out;
     position: relative;
     width: 150px;
     margin: 0 auto;
@@ -147,7 +147,7 @@ abbr[title] {
     }
 
     .resize-control {
-        // @include box-shadow(rgba($dark_gray, .2) 0 .1rem .1rem);
+        box-shadow: rgba($dark_gray, .2) 0 .1rem .1rem;
         position: absolute;
         z-index: 10;
         content: '';
