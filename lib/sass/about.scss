@@ -7,7 +7,7 @@
     color: $dark_gray;
     border-radius: .25rem;
     padding: 1rem;
-    // @include box-shadow(rgba($blue, .75) 0 0 .25rem);
+    box-shadow: rgba($blue, .75) 0 0 .25rem;
 }
 
 .about {
@@ -15,13 +15,6 @@
     code {
         font: 1rem Courier, monospace;
         color: $blue;
-    }
-
-    a {
-        color: $blue;
-        &:hover {
-            color: $blue;
-        }
     }
 
     .controls {

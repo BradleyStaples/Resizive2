@@ -34,12 +34,22 @@ body {
     color: $blue;
 }
 
+p {
+    margin: 0;
+
+    & + p {
+        margin-top: 12px;
+    }
+}
+
 a {
-    color: $white;
+    color: $blue;
     text-decoration: none;
+    transition: color .5s;
     
     &:hover {
-        color: #ddd;
+        transition: color .5s;
+        color: darken($blue, 15%);
         text-decoration: underline;
     }
 }

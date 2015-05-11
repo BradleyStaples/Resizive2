@@ -21,6 +21,10 @@ abbr[title] {
     text-align: center;
 }
 
+.font-small {
+    font-size: 0.75rem;
+}
+
 .font-large {
     font-size: 1.75rem;
 }
@@ -53,10 +57,14 @@ abbr[title] {
     color: $white;
     cursor: pointer;
 
+    a {
+        color: $white;
+    }
     &:hover {
         width: 190px;
     }
     a:hover {
+        color: $white;
         text-decoration: none;
     }
 }

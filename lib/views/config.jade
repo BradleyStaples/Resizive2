@@ -1,0 +1,9 @@
+extends layout
+
+block content
+    mixin header(false)
+        
+    div(class='about page')
+        a(class='btn right', href='/') &lArr; Home
+        h2 Resizive Config
+        include ./footer.jade

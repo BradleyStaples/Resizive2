@@ -1,3 +1,17 @@
+mixin header(show_form)
+    header(class='header')
+        div(class='titleContainer')
+            h1(class='sitetitle', title='Resize Responsive Websites')
+                a(href='/') Resizive
+        div(class='data-entry')
+            if show_form
+                input(type='url', class='url-entry', placeholder='Enter Website URL')
+                button(class='btn btn-load')
+                    span L
+                    | oad
+            a(href='/about', class='btn', title='Help &amp; About Resizive') ?
+            a(href='/config', class='btn font-large', title='Set Config Data') &#9881;
+
 doctype html
 html
     head
