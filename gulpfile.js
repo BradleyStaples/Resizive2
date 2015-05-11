@@ -93,8 +93,6 @@ gulp.task('watch', function () {
 	gulp.watch('./dist/stylesheets/*.css', notifyLiveReload);
 });
 
-// to do: image compression, html rendering in prod, jslin
-
 gulp.task('default', ['styles', 'js', 'coffee', 'start', 'livereload', 'watch'], function () {
 
 });

@@ -1,0 +1,16 @@
+TO DO:
+- image compression
+- fully set up build process
+- fully set up serve as prod
+  - serve html from dist directly
+  - change paths in code to use minified files
+  - look into gzip ?
+- configure jshint
+- configure uglify js
+- config lint of coffee
+- setup source maps for sass
+- setup source maps for coffee
+- use angular templates
+  - remove jade?
+- look into express routing - passing query params into templates
+  (or is this angular?)
