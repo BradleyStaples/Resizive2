@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <link rel="stylesheet" href="/stylesheets/resizive.css">
+    <meta charset="utf-8">
+    <meta author="Bradley Staples">
+    <meta description="Enables easier detection of content-based breakpoints for media queries in regards to responsively designed fluid-width websites.">
+    <meta viewport="width=device-width, initial-scale=1.0">
+    <link rel="image_src" href="/images/resizive.png">
+    <link rel="stylesheet" href="/stylesheets/resizive.css">
+    <link rel="canonical" href="http://resizive.com">
+    <link rel="shortcut" href="/favicon.ico">
+  </head>
+  <body>
+    <header class="header">
+      <div class="titleContainer">
+        <h1 title="Resize Responsive Websites" class="sitetitle"><a href="/">Resizive</a></h1>
+      </div>
+      <div class="data-entry"><a href="/about" title="Help &amp;amp; About Resizive" class="btn">?</a><a href="/config" title="Set Config Data" class="btn font-large">&#9881;</a>
+      </div>
+    </header>
+    <div class="about page"><a href="/" class="btn right">&lArr; Home</a>
+      <h2>About Resizive</h2>
+      <p><abbr title="pronounced /rēˈsīzsiv/ (a combo of Resize and Responsive)">Resizive</abbr> aims to improve finding media query breakpoints for responsively designed fluid websites by making the process sane and easy. No built in presets for device widths exist; there are simply too many devices in too many sizes for breakpoints based upon device widths to make any rational sense. Instead, breakpoints should be developed around the layout and flow of the content of the website.</p>
+      <p>Enter a website URL in the text field, press start, and watch the magic happen. The <code>body</code> tag of Resizive's website animates, constantly changing width and forcing the <code>iframe</code> containing the website indicated by the URL entered to repaint itself. Resizive animates in 50px steps starting from the browser's current width down to 320px wide, and then reverses and animates back to the width of the browser. 320px is an arbitrary low point based the smallest of the common mobile device sizes. Preferably, this arbitary number would not exist, but comparing sites against narrower widths doesn't make any sense. By making the browser's window fullscreen, the best effect will be gained by allowing Resizive to animate to that fullscreen width, displaying the largest range of sizes possible; having said that, Resizive works with browser windows of any size larger than 320px.</p>
+      <p>The width of the <code>body</code> tag at any given time is displayed in px during active use. If you notice a breakpoint in the animation where you think you need to apply a media query change, click the pause button. Plus(+) and minus(-) buttons appear that animate in single 10px steps to allow fine tuning to find the perfect break point. <em>Just don't forget to recalculate this pixel measurement as an em, rem, or percentage unit for a fluid design!</em></p>
+      <p>Resizive allows localhost to be used as a URL as well! Simply enter a URL similar to <code>localhost/~mywebsite/</code> and Resizive will treat it no different than a live URL. Also, if a known specific pixel width needs to checked for a breaking point, pause the resizing animation and edit the displayed width directly. This is very helpful for numbers that are not multiples of 10, or if trying to halt the animation as a precise point is difficult.</p>
+      <p>Keyboard controls recognized:</p>
+      <ul class="controls">
+        <li><code>S</code>: Start Resizing</li>
+        <li><code>E</code>: Start End Resizing</li>
+        <li><code>P</code>: Start Pause</li>
+        <li><code>R</code>: Start Resume</li>
+        <li><code>&uarr;, &larr;, -</code>: Decrement 10 pixels in width</li>
+        <li><code>&darr;, &rarr;, +</code>: Increment 10 pixels in width</li>
+      </ul>
+      <p class="font-small center">Developed by <a href="http://bradleystapl.es">Bradley Staples</a>. For comments, feedback, or questions visit my site and contact me, or I'm on Twitter as <a href="https://twitter.com/#!/bradleystaples">@BradleyStaples</a>.</p>
+    </div><img src="/images/loading.gif" width="32" height="32" alt="Loading" class="loading">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="/javascripts/dragdealer.js"></script>
+    <script src="/javascripts/keyboard.js"></script>
+    <script src="/javascripts/resizer.js"></script>
+    <script>
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-31105536-1']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+  </body>
+</html>

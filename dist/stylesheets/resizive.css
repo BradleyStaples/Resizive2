@@ -346,11 +346,20 @@ body {
   background: #fff;
   color: #59b8f8; }
 
+p {
+  margin: 0; }
+  p + p {
+    margin-top: 12px; }
+
 a {
-  color: #fff;
-  text-decoration: none; }
+  color: #59b8f8;
+  text-decoration: none;
+  -webkit-transition: color .5s;
+          transition: color .5s; }
   a:hover {
-    color: #ddd;
+    -webkit-transition: color .5s;
+            transition: color .5s;
+    color: #1099f5;
     text-decoration: underline; }
 
 .btn {
@@ -428,15 +437,12 @@ input.url-entry, .button-help {
   background: #f8f8f8;
   color: #333;
   border-radius: .25rem;
-  padding: 1rem; }
+  padding: 1rem;
+  box-shadow: rgba(89, 184, 248, 0.75) 0 0 .25rem; }
 
 .about code {
   font: 1rem Courier, monospace;
   color: #59b8f8; }
-.about a {
-  color: #59b8f8; }
-  .about a:hover {
-    color: #59b8f8; }
 .about .controls {
   list-style: none; }
 
@@ -451,6 +457,9 @@ abbr[title] {
 
 .center {
   text-align: center; }
+
+.font-small {
+  font-size: 0.75rem; }
 
 .font-large {
   font-size: 1.75rem; }
@@ -482,9 +491,12 @@ abbr[title] {
   font: 2rem/.9rem serif;
   color: #fff;
   cursor: pointer; }
+  .sitetitle a {
+    color: #fff; }
   .sitetitle:hover {
     width: 190px; }
   .sitetitle a:hover {
+    color: #fff;
     text-decoration: none; }
 
 .sitetitle:after, .sitetitle:before {

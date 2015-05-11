@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <link rel="stylesheet" href="/stylesheets/resizive.css">
+    <meta charset="utf-8">
+    <meta author="Bradley Staples">
+    <meta description="Enables easier detection of content-based breakpoints for media queries in regards to responsively designed fluid-width websites.">
+    <meta viewport="width=device-width, initial-scale=1.0">
+    <link rel="image_src" href="/images/resizive.png">
+    <link rel="stylesheet" href="/stylesheets/resizive.css">
+    <link rel="canonical" href="http://resizive.com">
+    <link rel="shortcut" href="/favicon.ico">
+  </head>
+  <body>
+    <header class="header">
+      <div class="titleContainer">
+        <h1 title="Resize Responsive Websites" class="sitetitle"><a href="/">Resizive</a></h1>
+      </div>
+      <div class="data-entry">
+        <input type="url" placeholder="Enter Website URL" class="url-entry"/>
+        <button class="btn btn-load"><span>L</span>oad</button><a href="/about" title="Help &amp;amp; About Resizive" class="btn">?</a><a href="/config" title="Set Config Data" class="btn font-large">&#9881;</a>
+      </div>
+    </header>
+    <div class="page">
+      <p class="center">For best results, set your browser to the widest width you wish to check (or simply fullscreen/maximize it)</p>
+      <p class="font-small center">Developed by <a href="http://bradleystapl.es">Bradley Staples</a>. For comments, feedback, or questions visit my site and contact me, or I'm on Twitter as <a href="https://twitter.com/#!/bradleystaples">@BradleyStaples</a>.</p>
+    </div><img src="/images/loading.gif" width="32" height="32" alt="Loading" class="loading">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="/javascripts/dragdealer.js"></script>
+    <script src="/javascripts/keyboard.js"></script>
+    <script src="/javascripts/resizer.js"></script>
+    <script>
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-31105536-1']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+  </body>
+</html>
