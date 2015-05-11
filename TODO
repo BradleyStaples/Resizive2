@@ -1,5 +1,8 @@
 TO DO:
-- image compression
+- figure out liveReload
+- svgo
+    - look into single quotes
+    - other plugins or just default?
 - fully set up build process
 - fully set up serve as prod
   - serve html from dist directly

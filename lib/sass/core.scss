@@ -23,15 +23,15 @@ body {
 }
 
 ::-moz-selection {
-    text-shadow: rgba($white, 0.5) .1rem .1rem 0;
-    background: $light_blue;
-    color: $blue;
+    text-shadow: rgba($black, 0.5) .1rem .1rem 0;
+    background: $blue;
+    color: $white;
 }
 
 ::selection {
-    text-shadow: rgba($light_blue, 0.5) .1rem .1rem 0;
-    background: $white;
-    color: $blue;
+    text-shadow: rgba($black, 0.5) .1rem .1rem 0;
+    background: $blue;
+    color: $white;
 }
 
 p {

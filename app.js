@@ -10,7 +10,7 @@ var routes = require('./lib/routes/index');
 var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'dist'));
+app.set('views', path.join(__dirname, 'lib/views'));
 app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /dist

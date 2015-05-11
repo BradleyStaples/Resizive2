@@ -3,7 +3,23 @@ extends layout
 block content
     mixin header(false)
         
-    div(class='about page')
+    div(class='config page')
         a(class='btn right', href='/') &lArr; Home
-        h2 Resizive Config
+        h2(class='center') Resizive Config
+        
+        form(method='post', action='/config/set', class='configForm')
+            label
+               | Increment Size
+               input(type='text', value='50', name='increment')
+            label
+               | Animation Speed (ms)
+               input(type='text', value='50', name='speed')
+            label
+               | Show Scrollbars?
+               input(type='checkbox', class='scrollbars')
+            label
+               | Show Rulers?
+               input(type='checkbox', class='rulers')
+            input(type='submit', class='btn submit')
+
         include ./footer.jade
