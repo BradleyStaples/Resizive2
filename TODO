@@ -10,10 +10,13 @@ TO DO:
   - look into gzip ?
 - configure jshint
 - configure uglify js
-- config lint of coffee
+    - combine js files into one compressed file
 - setup source maps for sass
 - setup source maps for coffee
 - use angular templates
   - remove jade?
 - look into express routing - passing query params into templates
   (or is this angular?)
+- get linting working in sublime text directly
+    - coffeelint
+    - jshint

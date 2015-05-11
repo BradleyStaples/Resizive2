@@ -1,4 +1,4 @@
-# Todo: minimize elements needed by using 'states' classes (resizing, paused, etc)
+# Todo: minimize elements needed by using 'states' classes
 # Todo: validate URL before starting.
 # Todo: add animation speed as option
 # Todo: support px and em
@@ -11,7 +11,8 @@
 # Todo: refresh shenanigans causing starts
 # Todo: keyboard shortcuts going crazy when not on animating page.
 # Todo: give height options/restrictions ?
-# Todo: question mark shows keyboard shotcut menu - http://www.impressivewebs.com/questionmark-js-shortcut-keys-displayed/
+# Todo: question mark shows keyboard shotcut menu
+    # - http://www.impressivewebs.com/questionmark-js-shortcut-keys-displayed/
 
 class Resizive
 
@@ -53,7 +54,7 @@ class Resizive
         currWidth: $(window).width()
         maxWidth: $(window).width()
 
-    constructor:  ->
+    constructor: ->
         @assignElements()
         @parseTemplates()
         @setBindings()
@@ -67,16 +68,17 @@ class Resizive
         @verticalDragger = new Dragdealer('resize-control.vertical', {
             horizontal: false
             vertical: true
-        });
+        })
 
         @horizontalDragger = new Dragdealer('resize-control.horizontal', {
             horizontal: true
             vertical: false
-        });
+        })
 
     assignElements: ->
         for element, selector of @elementSelectors
-            @elements[element] = $ selector if not @elements[element] or not @elements[element].length
+            el = @elements[element]
+            @elements[element] = $ selector if not el or el.length is 0
 
     parseTemplates: ->
         templates = [
@@ -128,7 +130,7 @@ class Resizive
         @setKeyBindings()
 
     setKeyBindings: ->
-        @k ?= window.Keyboard;
+        @k ?= window.Keyboard
         @k.bind 's', 'keydown', => @start.bind @
         @k.bind 'e', 'keydown', => @end.bind @
         @k.bind 'p', 'keydown', => @pause.bind @
@@ -151,19 +153,21 @@ class Resizive
         queryString = window.location.hash.toString().substring(1)
         regex = /([^&=]+)=([^&]*)/g
         matches = undefined
-        # while the regex finds matches in a xxx=yyy format, it splits & parses them up
+        # while the regex finds matches in a xxx=yyy format,
+        # it splits & parses them up
         matches = regex.exec(queryString)
         while matches
             # also decodes them in case they are URI encoded
-            result[decodeURIComponent(matches[1])] = decodeURIComponent(matches[2])
+            decode = decodeURIComponent
+            result[decode(matches[1])] = decode(matches[2])
             matches = regex.exec(queryString)
-        @data.url = result.url;
+        @data.url = result.url
         result
 
     load: () ->
         @elements.body.addClass @data.classResize
         @elements.img.removeClass 'hidden'
-        @data.url = @data.url || @elements.url.val()
+        @data.url = @data.url or @elements.url.val()
         @data.url = 'http://' + @data.url if @data.url.indexOf('://') is -1
         @render('animating', {url: @data.url})
         $(@elementSelectors.resizer).one 'load', =>
@@ -180,7 +184,7 @@ class Resizive
     start: (queryLoad) ->
         @elements.body.addClass @data.classResize
         @elements.img.removeClass 'hidden'
-        @data.url = @data.url || @elements.url.val()
+        @data.url = @data.url or @elements.url.val()
         @data.url = 'http://' + @data.url if @data.url.indexOf('://') is -1
         @render('animating', {url: @data.url})
         $(@elementSelectors.resizer).one 'load', =>
@@ -208,7 +212,8 @@ class Resizive
         @elements.body.removeClass @data.classPause
         # reset the direction
         @data.direction = -1
-        # reset the width back to the current max viewport size for currWidth and actual body/header elements
+        # reset the width back to the current max viewport size
+        # for currWidth and actual body/header elements
         @render('home', {url: @data.url})
         @data.url = null
         @data.currWidth = mw
@@ -225,7 +230,9 @@ class Resizive
         , duration, =>
             @elements.showWidth.text @data.currWidth + 'px'
 
-        window.location.hash = '#url=' + encodeURIComponent(@elements.url.val()) + '&width=' + encodeURIComponent(@data.currWidth)
+        url = encodeURIComponent(@elements.url.val())
+        query = '#url=' + url + '&width=' + encodeURIComponent(@data.currWidth)
+        window.location.hash = query
 
 
     keepInBounds: (reset) ->
@@ -267,7 +274,8 @@ class Resizive
         @data.paused = false
 
     setWidth: ->
-        px = @elements.showWidth.text().replace(' ', '').replace('px', '').replace('em', '')
+        px = @elements.showWidth.text()
+        px = px.replace(' ', '').replace('px', '').replace('em', '')
         startingWidth = @data.currWidth
         if isNaN(px)
             @elements.showWidth.text @data.currWidth + 'px'
@@ -291,4 +299,4 @@ class Resizive
         @elements.showWidth.text @data.currWidth + 'px'
 
 $ ->
-    window.resizive = new Resizive
+    window.resizive = new Resizive()

@@ -26,9 +26,10 @@ class Keyboard
     }
 
     isArray: (value) ->
-        Array.isArray || (value) -> return {}.toString.call value is '[object Array]'
+        s = '[object Array]'
+        Array.isArray or (value) -> return {}.toString.call value is s
 
-    generateCodes:  ->
+    generateCodes: ->
         @mapCode key, code for key, code of @keys
 
     mapCode: (key, code) ->
@@ -55,7 +56,7 @@ class Keyboard
 
     doesBindingExist: (key, method) ->
         if method not of @bindings then return false
-        return key of @bindings[method] 
+        return key of @bindings[method]
 
     register: (key, method, func) ->
         @bindings[method][key] = func
