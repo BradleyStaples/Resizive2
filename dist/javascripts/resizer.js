@@ -66,12 +66,13 @@ Resizive = (function() {
   }
 
   Resizive.prototype.assignElements = function() {
-    var element, ref, results, selector;
+    var el, element, ref, results, selector;
     ref = this.elementSelectors;
     results = [];
     for (element in ref) {
       selector = ref[element];
-      if (!this.elements[element] || !this.elements[element].length) {
+      el = this.elements[element];
+      if (!el || el.length === 0) {
         results.push(this.elements[element] = $(selector));
       } else {
         results.push(void 0);
@@ -235,14 +236,15 @@ Resizive = (function() {
   };
 
   Resizive.prototype.getQueryString = function() {
-    var matches, queryString, regex, result;
+    var decode, matches, queryString, regex, result;
     result = {};
     queryString = window.location.hash.toString().substring(1);
     regex = /([^&=]+)=([^&]*)/g;
     matches = void 0;
     matches = regex.exec(queryString);
     while (matches) {
-      result[decodeURIComponent(matches[1])] = decodeURIComponent(matches[2]);
+      decode = decodeURIComponent;
+      result[decode(matches[1])] = decode(matches[2]);
       matches = regex.exec(queryString);
     }
     this.data.url = result.url;
@@ -330,6 +332,7 @@ Resizive = (function() {
   };
 
   Resizive.prototype.animator = function(duration) {
+    var query, url;
     this.elements.body.animate({
       width: this.data.currWidth
     }, duration, (function(_this) {
@@ -337,7 +340,9 @@ Resizive = (function() {
         return _this.elements.showWidth.text(_this.data.currWidth + 'px');
       };
     })(this));
-    return window.location.hash = '#url=' + encodeURIComponent(this.elements.url.val()) + '&width=' + encodeURIComponent(this.data.currWidth);
+    url = encodeURIComponent(this.elements.url.val());
+    query = '#url=' + url + '&width=' + encodeURIComponent(this.data.currWidth);
+    return window.location.hash = query;
   };
 
   Resizive.prototype.keepInBounds = function(reset) {
@@ -396,7 +401,8 @@ Resizive = (function() {
 
   Resizive.prototype.setWidth = function() {
     var px, startingWidth;
-    px = this.elements.showWidth.text().replace(' ', '').replace('px', '').replace('em', '');
+    px = this.elements.showWidth.text();
+    px = px.replace(' ', '').replace('px', '').replace('em', '');
     startingWidth = this.data.currWidth;
     if (isNaN(px)) {
       this.elements.showWidth.text(this.data.currWidth + 'px');
@@ -432,5 +438,7 @@ Resizive = (function() {
 })();
 
 $(function() {
-  return window.resizive = new Resizive;
+  return window.resizive = new Resizive();
 });
+
+//# sourceMappingURL=maps/resizer.js.map

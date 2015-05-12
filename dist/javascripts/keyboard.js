@@ -36,8 +36,10 @@ Keyboard = (function() {
   };
 
   Keyboard.prototype.isArray = function(value) {
+    var s;
+    s = '[object Array]';
     return Array.isArray || function(value) {
-      return {}.toString.call(value === '[object Array]');
+      return {}.toString.call(value === s);
     };
   };
 
@@ -186,3 +188,5 @@ $(function() {
   window.Keyboard = new Keyboard();
   return window.Keyboard.generateCodes();
 });
+
+//# sourceMappingURL=maps/keyboard.js.map

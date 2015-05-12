@@ -585,3 +585,6 @@ abbr[title] {
 body:not(.resizing) .currently-resizing, body.resizing .not-resizing, body:not(.paused) .currently-paused, body.paused .not-paused {
   display: none; }
 
+
+
+/*# sourceMappingURL=maps/resizive.css.map */

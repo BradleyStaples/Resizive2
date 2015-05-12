@@ -2,6 +2,7 @@ var autoprefixer = require('gulp-autoprefixer'),
 	clean = require('gulp-clean')
 	coffee = require('gulp-coffee'),
 	coffeelint = require('gulp-coffeelint'),
+	concat = require('gulp-concat'),
 	gulp = require('gulp'),
 	gutil = require('gulp-util'),
 	jade = require('gulp-jade'),
@@ -10,6 +11,7 @@ var autoprefixer = require('gulp-autoprefixer'),
 	nodemon = require('gulp-nodemon'),
 	rename = require('gulp-rename'),
 	sass = require('gulp-sass'),
+	sourcemaps = require('gulp-sourcemaps'),
 	svgo = require('gulp-svgo'),
 	tinylr = require('tiny-lr')(),
 	uglify = require('gulp-uglify');
@@ -25,16 +27,26 @@ var notifyLiveReload = function (event) {
 	});
 }
 
+
 gulp.task('clean-files', function () {
     return gulp.src('dist/stylesheets/resizive.css', {read: false})
         .pipe(clean());
 });
 
+
 gulp.task('coffee-to-javascript', function () {
-	// not working atm
 	gulp.src('./lib/coffee/*.coffee')
-    	.pipe(coffee({bare: true})
-    		.on('error', gutil.log))
+		.pipe(sourcemaps.init())
+		.pipe(coffee({bare: true})).on('error', gutil.log)
+		.pipe(sourcemaps.write('./maps'))
+    	.pipe(gulp.dest('./dist/javascripts'))
+});
+
+
+gulp.task('combine-and-minify-js', ['move-js-to-dist'], function () {
+	gulp.src('./dist/javascripts/*.js')
+    	.pipe(uglify())
+    	.pipe(concat('resizive.js'))
     	.pipe(gulp.dest('./dist/javascripts'))
 });
 
@@ -72,17 +84,16 @@ gulp.task('minifiy-css', ['sass-to-css', 'prefix-css'], function () {
 });
 
 
-gulp.task('minify-js', function () {
-	gulp.src('./lib/js/*.js')
-		.pipe(uglify())
-		.pipe(gulp.dest('./dist/javascripts'));
-});
-
-
 gulp.task('minify-svgs', function () {
     gulp.src('./lib/images/*.svg')
         .pipe(svgo())
         .pipe(gulp.dest('dist/images'));
+});
+
+
+gulp.task('move-js-to-dist', function () {
+    gulp.src(['./lib/js/*.js', './lib/js/external/*.js'])
+        .pipe(gulp.dest('dist/javascripts'));
 });
 
 
@@ -105,7 +116,9 @@ gulp.task('start-dev', function () {
 
 gulp.task('sass-to-css', function () {
 	gulp.src('./lib/sass/resizive.scss')
+		.pipe(sourcemaps.init())
 		.pipe(sass({style: 'expanded'}))
+		.pipe(sourcemaps.write('./maps'))
 		.pipe(gulp.dest('./dist/stylesheets'))
 });
 
@@ -123,6 +136,7 @@ gulp.task('watch-files', function () {
 var default_tasks = [
 	'prefix-css',
 	'coffee-to-javascript',
+	'move-js-to-dist',
 	'start-dev',
 	'live-reload',
 	'watch-files'
@@ -137,7 +151,8 @@ var build_tasks = [
 	'minify-svgs',
 	'jade-to-html',
 	'lint-js',
-	'minify-js',
+	'move-js-to-dist',
+	'combine-and-minify-js',
 	'lint-coffee',
 	'coffee-to-javascript',
 	'clean-files'
