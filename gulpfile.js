@@ -1,11 +1,14 @@
+'use strict';
+
 var autoprefixer = require('gulp-autoprefixer'),
-	clean = require('gulp-clean')
+	clean = require('gulp-clean'),
 	coffee = require('gulp-coffee'),
 	coffeelint = require('gulp-coffeelint'),
 	concat = require('gulp-concat'),
 	gulp = require('gulp'),
 	gutil = require('gulp-util'),
 	jade = require('gulp-jade'),
+	jscs = require('gulp-jscs'),
 	jshint = require('gulp-jshint'),
 	minifycss = require('gulp-minify-css'),
 	nodemon = require('gulp-nodemon'),
@@ -13,7 +16,7 @@ var autoprefixer = require('gulp-autoprefixer'),
 	sass = require('gulp-sass'),
 	sourcemaps = require('gulp-sourcemaps'),
 	svgo = require('gulp-svgo'),
-	tinylr = require('tiny-lr')(),
+	tinylr = require('tiny-lr')(), 
 	uglify = require('gulp-uglify');
 
 
@@ -25,7 +28,7 @@ var notifyLiveReload = function (event) {
 			files: [fileName]
 		}
 	});
-}
+};
 
 
 gulp.task('clean-files', function () {
@@ -39,7 +42,7 @@ gulp.task('coffee-to-javascript', function () {
 		.pipe(sourcemaps.init())
 		.pipe(coffee({bare: true})).on('error', gutil.log)
 		.pipe(sourcemaps.write('./maps'))
-    	.pipe(gulp.dest('./dist/javascripts'))
+    	.pipe(gulp.dest('./dist/javascripts'));
 });
 
 
@@ -47,21 +50,21 @@ gulp.task('combine-and-minify-js', ['move-js-to-dist'], function () {
 	gulp.src('./dist/javascripts/*.js')
     	.pipe(uglify())
     	.pipe(concat('resizive.js'))
-    	.pipe(gulp.dest('./dist/javascripts'))
+    	.pipe(gulp.dest('./dist/javascripts'));
 });
 
 
 gulp.task('jade-to-html', function() {
 	gulp.src('./lib/views/*.jade')
 		.pipe(jade({pretty: true}))
-		.pipe(gulp.dest('./dist/'))
+		.pipe(gulp.dest('./dist/'));
 });
 
 
 gulp.task('lint-coffee', function () {
     gulp.src('./lib/coffee/*.coffee')
         .pipe(coffeelint())
-        .pipe(coffeelint.reporter())
+        .pipe(coffeelint.reporter());
 });
 
 
@@ -70,6 +73,13 @@ gulp.task('lint-js', function () {
     	.pipe(jshint())
     	.pipe(jshint.reporter('default'));
 });
+
+
+gulp.task('lint-js-styles', function () {
+    return gulp.src(['./*.js', './lib/js/*.js'])
+        .pipe(jscs());
+});
+
 
 gulp.task('live-reload', function () {
 	tinylr.listen(3001); // ./bin/www uses 3000
@@ -119,7 +129,7 @@ gulp.task('sass-to-css', function () {
 		.pipe(sourcemaps.init())
 		.pipe(sass({style: 'expanded'}))
 		.pipe(sourcemaps.write('./maps'))
-		.pipe(gulp.dest('./dist/stylesheets'))
+		.pipe(gulp.dest('./dist/stylesheets'));
 });
 
 

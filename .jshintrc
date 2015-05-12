@@ -1,0 +1,24 @@
+{
+    "bitwise": true,
+    "curly": true,
+    "eqeqeq": true,
+    "globals": {
+        "require": true
+    },
+    "globalstrict": false,
+    "forin": true,
+    "freeze": true,
+    "funcscope": false,
+    "iterator": false,
+    "latedef": true,
+    "noarg": true,
+    "node": true,
+    "nonbsp": true,
+    "nonew": true,
+    "notypeof": false,
+    "shadow": false,
+    "singleGroups": true,
+    "strict": true,
+    "undef": true,
+    "unused": true
+}
