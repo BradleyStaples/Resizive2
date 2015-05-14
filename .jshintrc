@@ -20,5 +20,5 @@
     "singleGroups": true,
     "strict": true,
     "undef": true,
-    "unused": true
+    "unused": "vars"
 }
