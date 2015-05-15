@@ -1,8 +1,5 @@
 TO DO:
 - figure out liveReload
-- svgo
-    - look into single quotes
-    - other plugins or just default?
 - fully set up build process
 - fully set up serve as prod
   - serve html from dist directly
@@ -12,6 +9,7 @@ TO DO:
   - remove jade?
 - look into express routing - passing query params into templates
   (or is this angular?)
+- unit tests
 
 
 KEYBOARD.JS

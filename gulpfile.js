@@ -46,7 +46,7 @@ gulp.task('combine-and-minify-js', ['move-js-to-dist'], function () {
 
 
 gulp.task('copy-favicon', function () {
-    gulp.src('./lib/views/favicon.ico')
+    gulp.src('./lib/images/favicon.ico')
         .pipe(gulp.dest('./dist/'));
 });
 
