@@ -29,8 +29,8 @@
     "requireAnonymousFunctions": true,
     "requireBlocksOnNewline": true,
     "requireCapitalizedConstructors": true,
-    "requireCommaBeforeLineBreak": true,    
-    "requireCurlyBraces": ["if", "else", "for", "while", "do", "try", "catch", "switch"]
+    "requireCommaBeforeLineBreak": true,
+    "requireCurlyBraces": ["if", "else", "for", "while", "do", "try", "catch", "switch"],
     "requireDollarBeforejQueryAssignment": "ignoreProperties",
     "requireDotNotation": true,
     "requireLineBreakAfterVariableAssignment": true,
@@ -38,6 +38,8 @@
     "requireOperatorBeforeLineBreak": true,
     "requirePaddingNewLinesAfterUseStrict": true,
     "requirePaddingNewlinesBeforeKeywords": true,
+
+    "requirePaddingNewlinesBeforeKeywords": ["do", "for", "if", "switch", "try", "while", "with", "typeof", "function"],
     "requirePaddingNewLinesBeforeLineComments": {
         "allExcept": "firstAfterCurly"
     },
