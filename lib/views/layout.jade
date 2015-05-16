@@ -1,16 +1,45 @@
-mixin header(show_form)
+mixin header(page_type)
     header(class='header')
         div(class='titleContainer')
             h1(class='sitetitle', title='Resize Responsive Websites')
                 a(href='/') Resizive
         div(class='data-entry')
-            if show_form
+            if page_type == 'index'
                 input(type='url', class='url-entry', placeholder='Enter Website URL')
                 button(class='btn btn-load')
                     span L
                     | oad
-            a(href='/about', class='btn', title='Help &amp; About Resizive') ?
-            a(href='/config', class='btn font-large', title='Set Config Data') &#9881;
+                a(href='/about', class='btn', title='Help &amp; About Resizive') ?
+                a(href='/config', class='btn font-large', title='Set Config Data') &#9881;
+            if page_type == 'secondary'
+                a(href='/about', class='btn', title='Help &amp; About Resizive') ?
+                a(href='/config', class='btn font-large', title='Set Config Data') &#9881;
+            if page_type == 'resizing'
+                div(class='currently-resizing not-paused button-row')
+                    button(class='btn btn-end')
+                        span E
+                        | nd
+                    button(class='btn btn-pause')
+                        span P
+                        | ause
+
+                div(class='currently-paused button-row')
+                    button(class='btn btn-end')
+                        span E
+                        | nd
+                    button(class='btn btn-resume')
+                        span R
+                        | esume
+                    button(class='btn btn-minus')
+                        | &laquo;
+                        span -
+                        | 10
+                    button(class='btn btn-plus')
+                        | &raquo;
+                        span +
+                        | 10
+                div(class='show-width', contenteditable, title='Set A Specific Width (PX)')
+
 
 doctype html
 html

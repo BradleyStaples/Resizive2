@@ -1,12 +1,12 @@
 extends layout
 
 block content
-    mixin header(false)
-        
+    mixin header('secondary')
+
     div(class='config page')
         a(class='btn right', href='/') &lArr; Home
         h2(class='center') Resizive Config
-        
+
         form(method='post', action='/config/set', class='configForm')
             label
                | Increment Size
