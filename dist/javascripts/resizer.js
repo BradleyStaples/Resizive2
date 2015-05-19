@@ -166,7 +166,7 @@ Resizive.prototype.end = function () {
     this.config.url = null;
     this.config.currWidth = this.config.maxWidth;
     this.elements.body.width(this.config.maxWidth);
-    this.elements.val.text(this.config.maxWidth);
+    this.elements.showWidth.val(this.config.maxWidth);
     window.location.hash = '';
     this.config.paused = false;
     this.config.resizing = false;
@@ -216,8 +216,8 @@ Resizive.prototype.plus = function () {
 };
 
 Resizive.prototype.resize = function (durationType, sizeType) {
-    var adjustment = this.data[sizeType];
-    var duration = this.data[durationType];
+    var adjustment = this.config[sizeType];
+    var duration = this.config[durationType];
     var reset = durationType === 'stepDuration' ? false : true;
     var startingWidth = this.config.currWidth;
     this.config.currWidth = this.config.currWidth + adjustment * this.config.direction;
