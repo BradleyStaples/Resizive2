@@ -24,15 +24,6 @@ var Resizive = function (url) {
 
     this.setWidthFromQueryString();
 
-    this.verticalDragger = new Dragdealer('resize-control.vertical', {
-        horizontal: false,
-        vertical: true
-    });
-    this.horizontalDragger = new Dragdealer('resize-control.horizontal', {
-        horizontal: true,
-        vertical: false
-    });
-
     this.elements.resizer.one('load', function () {
         this.elements.body.addClass(this.config.classResize);
         this.elements.img.addClass(this.config.classHidden);
