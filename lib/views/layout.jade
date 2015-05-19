@@ -1,44 +1,35 @@
 mixin header(page_type)
-    header(class='header')
-        div(class='titleContainer')
-            h1(class='sitetitle', title='Resize Responsive Websites')
+    header.header
+        .titleContainer
+            h1.sitetitle(title='Resize Responsive Websites')
                 a(href='/') Resizive
-        div(class='data-entry')
+        .data-entry
             if page_type == 'index'
-                input(type='url', class='url-entry', placeholder='Enter Website URL')
-                button(class='btn btn-load')
-                    span L
-                    | oad
-                a(href='/about', class='btn', title='Help &amp; About Resizive') ?
-                a(href='/config', class='btn font-large', title='Set Config Data') &#9881;
+                form(method='get', action='/resizing')
+                    input.url-entry(type='url', name='url', placeholder='Enter Website URL')
+                    button.btn.btn-load(type='submit')
+                        span L
+                        | oad
+                    a.btn.font-large.left-space(href='/config', title='Set Config Data') &#9881;
             if page_type == 'secondary'
-                a(href='/about', class='btn', title='Help &amp; About Resizive') ?
-                a(href='/config', class='btn font-large', title='Set Config Data') &#9881;
+                a.btn.font-large.left-space(href='/config', title='Set Config Data') &#9881;
             if page_type == 'resizing'
-                div(class='currently-resizing not-paused button-row')
-                    button(class='btn btn-end')
+                .button-row
+                    button.btn.btn-end
                         span E
                         | nd
-                    button(class='btn btn-pause')
-                        span P
-                        | ause
-
-                div(class='currently-paused button-row')
-                    button(class='btn btn-end')
-                        span E
-                        | nd
-                    button(class='btn btn-resume')
+                    button.btn.btn-resume
                         span R
                         | esume
-                    button(class='btn btn-minus')
+                    button.btn.btn-minus
                         | &laquo;
                         span -
                         | 10
-                    button(class='btn btn-plus')
+                    button.btn.btn-plus
                         | &raquo;
                         span +
                         | 10
-                div(class='show-width', contenteditable, title='Set A Specific Width (PX)')
+                input.show-width(type='text', title='Set A Specific Width (PX)')
 
 
 doctype html
@@ -56,13 +47,7 @@ html
         link(rel='shortcut', href='/favicon.ico')
     body
         block content
-
-
         script(src='https://code.jquery.com/jquery-2.1.4.min.js')
-        script(src='/javascripts/dragdealer.js')
-        script(src='/javascripts/keyboard.js')
-        script(src='/javascripts/resizer.js')
-
         script.
             var _gaq = _gaq || [];
             _gaq.push(['_setAccount', 'UA-31105536-1']);

@@ -3,11 +3,13 @@ extends layout
 block content
     mixin header('resizing')
 
-    div(class='resizing page')
+    .resizing.page
 
-        div(class='resizerContainer')
-            iframe(frameborder='0', width='100%', height='600', class='resizer', src='#{url}')
-            div(class='resize-control vertical')
-            div(class='resize-control horizontal')
+        .resizerContainer
+            iframe.resizer(frameborder='0', width='100%', height='600', src='#{url}')
+            .resize-control.vertical
+            .resize-control.horizontal
 
-        include ./footer.jade
+        script(src='/javascripts/dragdealer.js')
+        script(src='/javascripts/keyboard.js')
+        script(src='/javascripts/resizer.js')

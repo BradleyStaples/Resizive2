@@ -1,9 +1,62 @@
 @import "normalize";
 @import "variables";
-@import "core";
 @import "form_controls";
-@import "about";
 
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+html, body {
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 21px;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    background-image: linear-gradient(45deg, #e3e3e3 25%, transparent 25%, transparent 75%, #e3e3e3 75%, #e3e3e3),
+    linear-gradient(45deg, #e3e3e3 25%, transparent 25%, transparent 75%, #e3e3e3 75%, #e3e3e3);
+    background-size: 40px 40px;
+    background-position: 0 0, 20px 20px;
+}
+
+::-moz-selection {
+    text-shadow: rgba($black, 0.5) 2px 2px 0;
+    background: $blue;
+    color: $white;
+}
+
+::selection {
+    text-shadow: rgba($black, 0.5) 2px 2px 0;
+    background: $blue;
+    color: $white;
+}
+
+p {
+    margin: 0;
+
+    & + p {
+        margin-top: 12px;
+    }
+}
+
+a {
+    color: $blue;
+    text-decoration: none;
+    transition: color .5s;
+
+    &:hover {
+        transition: color .5s;
+        color: darken($blue, 15%);
+        text-decoration: underline;
+    }
+}
 
 abbr[title] {
     cursor: help;
@@ -21,39 +74,49 @@ abbr[title] {
     text-align: center;
 }
 
+.blockCenter {
+    display: block;
+    margin: 0 auto;
+}
+
 .font-small {
     font-size: 0.75rem;
+    line-height: 1.35;
 }
 
 .font-large {
     font-size: 1.75rem;
 }
 
+.left-space {
+    margin-left: 5px;
+}
+
 .header {
-    box-shadow: rgba($dark_gray, .2) 0 .1rem .1rem;
+    box-shadow: rgba($dark_gray, .2) 0 2px 2px;
     background-image: linear-gradient(to bottom, $blue, $light_blue);
-    height: 3.25rem;
+    height: 52px;
     margin: 0;
-    padding: .4rem;
-    border-bottom: .1rem solid darken($blue, 5%);
+    padding: 6px;
+    border-bottom: 2px solid darken($blue, 5%);
 }
 
 .titleContainer {
     display: inline-block;
     width: 190px;
-    margin: .25rem;
+    margin: 4px;
     text-align: center;
 }
 
 .sitetitle {
-    text-shadow: rgba($blue, 0.5) .075rem .075rem .15rem;
+    text-shadow: rgba($blue, 0.5) 1px 1px 2px;
     transition: width 0.3s ease-out;
     position: relative;
     width: 150px;
     margin: 0 auto;
-    padding-bottom: .5rem;
+    padding-bottom: 8px;
     border-bottom: 3px solid $white;
-    font: 2rem/.9rem serif;
+    font-size: 2rem;
     color: $white;
     cursor: pointer;
 
@@ -103,10 +166,13 @@ abbr[title] {
 }
 
 .show-width {
-    height: 1.9rem;
-    padding: .2rem;
-    color: $dark_gray;
+    width: 60px;
+    height: 30px;
+    padding: 3px;
+    color: $white;
     font-weight: bold;
+    background: transparent;
+    border: none;
 }
 
 .show-width:hover {
@@ -115,23 +181,45 @@ abbr[title] {
 
 .show-width:focus,
 .show-width:active {
-    border: .1rem solid lighten($light_gray, 10%);
+    border: 2px solid lighten($light_gray, 10%);
     background: $white;
     color: $black;
-    border-radius: .25rem;
+    border-radius: 4px;
 }
 
 .loading {
-    text-align: center;
-    display: none;
-    margin: 1rem auto;
+    display: block;
+    margin: 16px auto;
 }
 
 .paused {
+
     .btn-plus,
     .btn-minus {
         display: inline-block;
     }
+}
+
+.page {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    min-width: 320px;
+    margin: 32px auto;
+    background: #f8f8f8;
+    color: $dark_gray;
+    border-radius: 4px;
+    padding: 16px;
+    box-shadow: rgba($blue, .75) 0 0 4px;
+}
+
+code {
+    font: 1rem Courier, monospace;
+    color: $blue;
+}
+
+.controls {
+    list-style: none;
 }
 
 .resizerContainer {
@@ -141,21 +229,13 @@ abbr[title] {
 }
 
 .resizing {
-    .btn-pause,
-    .show-width {
-        display: inline-block;
-    }
-    .button-help,
-    .header,
-    .url-entry {
-        display: none;
-    }
+
     .resizer {
-        padding-bottom: 3.1rem;
+        padding-bottom: 50px;
     }
 
     .resize-control {
-        box-shadow: rgba($dark_gray, .2) 0 .1rem .1rem;
+        box-shadow: rgba($dark_gray, .2) 0 2px 2px;
         position: absolute;
         z-index: 10;
         content: '';
@@ -187,13 +267,13 @@ abbr[title] {
     }
 }
 
-body:not(.resizing) .currently-resizing,
-body.resizing .not-resizing,
-body:not(.paused) .currently-paused,
-body.paused .not-paused {
-    display: none;
+footer {
+    max-width: 500px;
+    margin: 15px auto 0 auto;
+    text-align: center;
 }
 
-.not.resizing {
-
+.inlineFooter {
+    border-top: 1px solid $med_gray;
+    padding-top: 15px;
 }

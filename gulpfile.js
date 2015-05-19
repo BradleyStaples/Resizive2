@@ -4,7 +4,6 @@ var autoprefixer = require('gulp-autoprefixer');
 var clean = require('gulp-clean');
 var concat = require('gulp-concat');
 var gulp = require('gulp');
-var gutil = require('gulp-util');
 var jade = require('gulp-jade');
 var jscs = require('gulp-jscs');
 var jshint = require('gulp-jshint');
@@ -151,6 +150,7 @@ var default_tasks = [
     'prefix-css',
     'move-js-to-dist',
     'start-dev',
+    'jade-to-html',
     'live-reload',
     'watch-files'
 ];

@@ -1,7 +1,14 @@
 extends layout
 
 block content
-    h1= message
-    if error
-        h2= error.status
-        pre #{error.stack}
+    mixin header('secondary')
+
+    .page
+        a.btn.right(href='/') &lArr; Home
+
+        h2.center= message
+        if error
+            h2= error.status
+            pre #{error.stack}
+
+        include ./footer.jade

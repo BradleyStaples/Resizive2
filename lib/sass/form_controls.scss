@@ -66,25 +66,18 @@
 }
 
 .btn span {
-        border-bottom: .1rem solid $blue;
+    border-bottom: .1rem solid $blue;
 }
 
-.btn-pause,
-.btn-plus,
-.btn-minus,
-.show-width {
-        display: none;
-}
-
-input.url-entry {
+.url-entry {
     width: 20rem;
     border-radius: .25rem;
 }
 
-input.url-entry,
+.url-entry,
 .button-help {
-        height: 1.8rem;
-        vertical-align: top;
+    height: 1.8rem;
+    vertical-align: top;
 }
 
 label {

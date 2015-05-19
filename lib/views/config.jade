@@ -3,11 +3,11 @@ extends layout
 block content
     mixin header('secondary')
 
-    div(class='config page')
-        a(class='btn right', href='/') &lArr; Home
-        h2(class='center') Resizive Config
+    .page.config
+        a.btn.right(href='/') &lArr; Home
+        h2.center Resizive Config
 
-        form(method='post', action='/config/set', class='configForm')
+        form.configForm(method='post', action='/config/set')
             label
                | Increment Size
                input(type='text', value='50', name='increment')
@@ -16,10 +16,10 @@ block content
                input(type='text', value='50', name='speed')
             label
                | Show Scrollbars?
-               input(type='checkbox', class='scrollbars')
+               input.scrollbars(type='checkbox')
             label
                | Show Rulers?
-               input(type='checkbox', class='rulers')
-            input(type='submit', class='btn submit')
+               input.rulers(type='checkbox')
+            input.btn.submit(type='submit')
 
         include ./footer.jade
