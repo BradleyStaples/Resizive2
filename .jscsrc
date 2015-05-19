@@ -38,7 +38,7 @@
     "requirePaddingNewLinesAfterUseStrict": true,
     "requirePaddingNewlinesBeforeKeywords": true,
 
-    "requirePaddingNewlinesBeforeKeywords": ["do", "for", "if", "switch", "try", "while", "with", "typeof", "function"],
+    "requirePaddingNewlinesBeforeKeywords": ["do", "for", "switch", "try", "while", "with", "typeof", "function"],
     "requirePaddingNewLinesBeforeLineComments": {
         "allExcept": "firstAfterCurly"
     },

@@ -84,11 +84,14 @@
 
     Keyboard.prototype.register = function (key, method, func) {
         this.bindings[method][key] = func;
-        this.body.addEventListener(method, this.mapper.bind(this, method), false);
+        var listener = this.mapper.bind(this, method);
+        this.body.addEventListener(method, listener, false);
     };
 
     Keyboard.prototype.unregister = function (key, method) {
-        this.body.removeEventListener(method, this.mapper.bind(this, method), false);
+        delete this.bindings[method][key];
+        var listener = this.mapper.bind(this, method);
+        this.body.removeEventListener(method, listener, false);
     };
 
     Keyboard.prototype.unbindMethod = function (method) {

@@ -131,8 +131,10 @@ gulp.task('sass-to-css', function () {
 
 gulp.task('watch-files', function () {
     gulp.watch('./lib/sass/*.scss', ['prefix-css']);
-    gulp.watch('./lib/js/*.js', notifyLiveReload);
-    gulp.watch('./lib/views/*.jade', notifyLiveReload);
+    gulp.watch('./lib/js/*.js', ['move-js-to-dist']);
+    gulp.watch('./lib/views/*.jade', ['jade-to-html']);
+    gulp.watch('./dist/*.html', notifyLiveReload);
+    gulp.watch('./dist/javascripts/*.js', notifyLiveReload);
     gulp.watch('./dist/stylesheets/*.css', notifyLiveReload);
 });
 

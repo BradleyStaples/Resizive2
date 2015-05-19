@@ -7,18 +7,22 @@ mixin header(page_type)
             if page_type == 'index'
                 form(method='get', action='/resizing')
                     input.url-entry(type='url', name='url', placeholder='Enter Website URL')
-                    button.btn.btn-load(type='submit')
-                        span L
-                        | oad
+                    button.btn.btn-load(type='submit') &#9851;
                     a.btn.font-large.left-space(href='/config', title='Set Config Data') &#9881;
             if page_type == 'secondary'
                 a.btn.font-large.left-space(href='/config', title='Set Config Data') &#9881;
             if page_type == 'resizing'
                 .button-row
-                    button.btn.btn-end
+                    button.btn.btn-start
+                        span S
+                        | tart
+                    button.btn.btn-end.hidden
                         span E
                         | nd
-                    button.btn.btn-resume
+                    button.btn.btn-pause.hidden
+                        span P
+                        | ause
+                    button.btn.btn-resume.hidden
                         span R
                         | esume
                     button.btn.btn-minus
@@ -57,3 +61,12 @@ html
                 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
                 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
             })();
+        if extra_scripts
+            script(src='/javascripts/dragdealer.js')
+            script(src='/javascripts/keyboard.js')
+            script(src='/javascripts/resizer.js')
+            script.
+                $(function () {
+                    window.resizive = new Resizive('#{url}');
+                });
+
