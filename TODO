@@ -5,11 +5,9 @@ TO DO:
   - serve html from dist directly
   - change paths in code to use minified files
   - look into gzip ?
-- use angular templates
-  - remove jade?
-- look into express routing - passing query params into templates
-  (or is this angular?)
 - unit tests
+- When holding down mouse on increment/decrement button, continue to increment/decrement
+- code comments
 
 
 KEYBOARD.JS

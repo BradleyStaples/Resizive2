@@ -80,6 +80,9 @@ Resizive.prototype.setBindings = function () {
 };
 
 Resizive.prototype.createConfig = function (url) {
+    var window_width = $(window).width();
+    var max_width = 2000;
+
     return {
         url: url,
         timer: null,
@@ -95,8 +98,8 @@ Resizive.prototype.createConfig = function (url) {
         animationDuration: 100,
         animationIncrement: 50,
         minWidth: 320,
-        currWidth: $(window).width(),
-        maxWidth: $(window).width()
+        currWidth: window_width,
+        maxWidth: window_width < max_width ? window_width : max_width
     };
 };
 
@@ -117,14 +120,15 @@ Resizive.prototype.getSiteUrlFromQueryString = function () {
 Resizive.prototype.setWidthFromQueryString = function () {
     var queryObject = this.getQueryStringObject();
     if (queryObject.hasOwnProperty('width') && !isNaN(queryObject.width)) {
-        this.updateWidth(queryObject.width, true);
+        this.updateWidth(queryObject.width);
     }
 };
 
 Resizive.prototype.getQueryStringObject = function () {
     var queryObject = {};
-    var queryString = window.location.search.toString().substring(1);
     var regex = /([^&=]+)=([^&]*)/g;
+    var queryString = window.location.search.toString().substring(1);
+    queryString += '&' + window.location.hash.toString().substring(1);
     var matches = regex.exec(queryString);
 
     while (matches) {
@@ -133,17 +137,6 @@ Resizive.prototype.getQueryStringObject = function () {
     }
 
     return queryObject;
-};
-
-Resizive.prototype.start = function (queryLoad) {
-    this.animator(this.config.animationDuration);
-    this.config.timer = setInterval(function () {
-        this.resize('animationDuration', 'animationIncrement');
-    }.bind(this), this.config.animationDuration);
-    this.config.paused = false;
-    this.config.resizing = true;
-    this.elements.startButton.addClass(this.config.classHidden);
-    this.elements.resumeButton.removeClass(this.config.classHidden);
 };
 
 Resizive.prototype.animator = function (duration) {
@@ -172,23 +165,6 @@ Resizive.prototype.keepInBounds = function (reset) {
     }
 };
 
-Resizive.prototype.minus = function () {
-    this.updateDirection(-1);
-    this.resize('stepDuration', 'stepIncrememnt');
-};
-
-Resizive.prototype.pause = function () {
-    this.elements.body.addClass(this.config.classPause).stop(true, true);
-    clearInterval(this.config.timer);
-    this.updateWidth(this.elements.container.width());
-    this.config.paused = true;
-};
-
-Resizive.prototype.plus = function () {
-    this.updateDirection(+1);
-    this.resize('stepDuration', 'stepIncrememnt');
-};
-
 Resizive.prototype.resize = function (durationType, sizeType) {
     var adjustment = this.config[sizeType];
     var duration = this.config[durationType];
@@ -200,14 +176,6 @@ Resizive.prototype.resize = function (durationType, sizeType) {
     if (startingWidth !== this.config.currWidth) {
         return this.animator(duration);
     }
-};
-
-Resizive.prototype.resume = function () {
-    this.elements.body.removeClass(this.config.classPause).stop(true, true);
-    this.config.timer = setInterval(function () {
-        this.resize('animationDuration', 'animationIncrement');
-    }.bind(this), this.config.animationDuration);
-    this.config.paused = false;
 };
 
 Resizive.prototype.setWidth = function () {
@@ -240,14 +208,60 @@ Resizive.prototype.updateMaxWidth = function () {
     this.config.max = $(window).width();
 };
 
-Resizive.prototype.updateWidth = function (newWidth, do_blur) {
+Resizive.prototype.updateWidth = function (newWidth) {
     newWidth = parseInt(newWidth, 10);
     this.config.currWidth = newWidth;
+    this.elements.showWidth.val(newWidth);
+};
 
-    if (do_blur) {
-        // blur after as a cheap way of resizing iframe
-        this.elements.showWidth.val(newWidth).blur();
+Resizive.prototype.setState = function (is_resizing) {
+    this.config.resizing = is_resizing;
+    if (is_resizing) {
+        this.elements.resumeButton.prop('disabled', true);
+        this.elements.pauseButton.prop('disabled', false);
     } else {
-        this.elements.showWidth.val(newWidth);
+        this.elements.resumeButton.prop('disabled', false);
+        this.elements.pauseButton.prop('disabled', true);
     }
+};
+
+Resizive.prototype.start = function () {
+    if (this.config.resizing) {
+        return;
+    }
+    this.setState(true);
+    this.animator(this.config.animationDuration);
+    this.config.timer = setInterval(function () {
+        this.resize('animationDuration', 'animationIncrement');
+    }.bind(this), this.config.animationDuration);
+    this.elements.startButton.addClass(this.config.classHidden);
+    this.elements.resumeButton.removeClass(this.config.classHidden);
+};
+
+Resizive.prototype.resume = function () {
+    if (this.config.resizing) {
+        return;
+    }
+    this.setState(true);
+    this.elements.body.removeClass(this.config.classPause).stop(true, true);
+    this.config.timer = setInterval(function () {
+        this.resize('animationDuration', 'animationIncrement');
+    }.bind(this), this.config.animationDuration);
+};
+
+Resizive.prototype.pause = function () {
+    this.setState(false);
+    this.elements.body.addClass(this.config.classPause).stop(true, true);
+    clearInterval(this.config.timer);
+    this.updateWidth(this.config.currWidth);
+};
+
+Resizive.prototype.minus = function () {
+    this.updateDirection(-1);
+    this.resize('stepDuration', 'stepIncrememnt');
+};
+
+Resizive.prototype.plus = function () {
+    this.updateDirection(+1);
+    this.resize('stepDuration', 'stepIncrememnt');
 };

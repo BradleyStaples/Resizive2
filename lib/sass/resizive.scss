@@ -181,14 +181,14 @@ abbr[title] {
 }
 
 .show-width:hover {
-    color: $black;
+    color: $med_gray;
 }
 
 .show-width:focus,
 .show-width:active {
     border: 2px solid lighten($light_gray, 10%);
     background: $white;
-    color: $black;
+    color: $dark_gray;
     border-radius: 4px;
 }
 

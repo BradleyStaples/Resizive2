@@ -524,12 +524,12 @@ abbr[title] {
   border: none; }
 
 .show-width:hover {
-  color: #000; }
+  color: #555; }
 
 .show-width:focus, .show-width:active {
   border: 2px solid #d4d4d4;
   background: #fff;
-  color: #000;
+  color: #333;
   border-radius: 4px; }
 
 .loading {
