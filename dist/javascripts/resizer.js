@@ -1,4 +1,4 @@
-/* global $, window, Dragdealer */
+/* global $, window, SimpleResizer */
 
 'use strict';
 
@@ -32,6 +32,19 @@ var Resizive = function (url) {
         });
 
         this.keepInBounds(false);
+
+
+        this.vertical_resizer = new SimpleResizer({
+            element: this.selectors.resizer,
+            handle: '.resize-control.vertical',
+            direction: 'vertical'
+        });
+
+        this.horizontal_resizer = new SimpleResizer({
+            element: this.selectors.resizer,
+            handle: '.resize-control.horizontal',
+            direction: 'horizontal'
+        });
 
         // set to size according to potential querystring with 1ms animation duration
         this.animator(1);
