@@ -4,11 +4,15 @@ block content
     mixin header('secondary')
 
     .page
-        a.btn.right(href='/') &lArr; Home
 
-        h2.center= message
+        h1.center.error-shrug ¯\_(ツ)_/¯
         if error
-            h2= error.status
-            pre #{error.stack}
+            h2.center Error #{error.status}
+        if message
+            p.center=message
+
+        p.center Something went wrong. Was it you? Maybe me? Alright, let's call it a draw.
+            br
+            span.font-small (It was probably me)
 
         include ./footer.jade
