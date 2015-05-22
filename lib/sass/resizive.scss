@@ -243,33 +243,6 @@ code {
         padding-bottom: 50px;
     }
 
-    .resize-control {
-        box-shadow: rgba($dark_gray, .2) 0 2px 2px;
-        position: absolute;
-        z-index: 10;
-        content: '';
-        display: block;
-        width: 20px;
-        height: 20px;
-        border: 1px solid $blue;
-        border-radius: 50%;
-        background-color: $light_blue;
-    }
-
-    .resize-control.horizontal {
-        top: 50%;
-        right: 10px;
-        margin-top: -10px;
-        cursor: ew-resize;
-    }
-
-    .resize-control.vertical {
-        left: 50%;
-        bottom: 10px;
-        margin-left: -10px;
-        cursor: ns-resize;
-    }
-
     .data-entry {
         margin: 0;
         text-align: left;
