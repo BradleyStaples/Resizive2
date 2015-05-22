@@ -1,0 +1,30 @@
+.ui-resizable {
+    position: relative;
+}
+
+.ui-resizable-handle {
+    position: absolute;
+    display: block;
+    width: 24px;
+    height: 47px;
+    font-size: 0.1px;
+    -ms-touch-action: none;
+    touch-action: none;
+    background-image: url(/images/handle.png);
+    background-repeat: no-repeat;
+}
+
+.ui-resizable-s {
+    bottom: 0;
+    left: 50%;
+    margin-left: -24px;
+    cursor: ns-resize;
+    transform: rotate(90deg);
+}
+
+.ui-resizable-e {
+    right: 0;
+    top: 50%;
+    margin-top: -12px;
+    cursor: ew-resize;
+}

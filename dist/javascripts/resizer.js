@@ -1,4 +1,4 @@
-/* global $, window, SimpleResizer */
+/* global $, window */
 
 'use strict';
 
@@ -33,17 +33,22 @@ var Resizive = function (url) {
 
         this.keepInBounds(false);
 
+        var $iframe = this.elements.resizer;
 
-        this.vertical_resizer = new SimpleResizer({
-            element: this.selectors.resizer,
-            handle: '.resize-control.vertical',
-            direction: 'vertical'
-        });
-
-        this.horizontal_resizer = new SimpleResizer({
-            element: this.selectors.resizer,
-            handle: '.resize-control.horizontal',
-            direction: 'horizontal'
+        this.elements.container.resizable({
+            handles: 'e, s',
+            alsoResize: this.selectors.resizers,
+            maxHeight: $(window).height(),
+            maxWidth: $(window).width(),
+            minHeight: 320,
+            minWidth: 320,
+            iframeFix: true,
+            start: function (event, ui) {
+                $iframe.css('pointer-events', 'none');
+            },
+            stop: function (event, ui) {
+                $iframe.css('pointer-events', 'auto');
+            }
         });
 
         // set to size according to potential querystring with 1ms animation duration

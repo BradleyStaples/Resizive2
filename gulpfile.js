@@ -29,7 +29,7 @@ var notifyLiveReload = function (event) {
 
 
 gulp.task('clean-files', function () {
-    return gulp.src('dist/stylesheets/resizive.css', {
+    return gulp.src(['dist'], {
             read: false
         })
         .pipe(clean());
@@ -94,6 +94,12 @@ gulp.task('minify-svgs', function () {
 });
 
 
+gulp.task('move-images-to-dist', function () {
+    gulp.src(['./lib/images/*.jpg', './lib/images/*.png'])
+        .pipe(gulp.dest('dist/images'));
+});
+
+
 gulp.task('move-js-to-dist', function () {
     gulp.src(['./lib/js/*.js', './lib/js/external/*.js'])
         .pipe(gulp.dest('dist/javascripts'));
@@ -151,6 +157,7 @@ gulp.task('verify', verify_tasks, function () {
 var default_tasks = [
     'prefix-css',
     'move-js-to-dist',
+    'move-images-to-dist',
     'start-dev',
     'jade-to-html',
     'live-reload',
@@ -162,6 +169,7 @@ gulp.task('default', default_tasks, function () {
 
 
 var build_tasks = [
+    'clean-files',
     'verify',
     'minifiy-css',
     'minify-svgs',
@@ -169,7 +177,7 @@ var build_tasks = [
     'move-js-to-dist',
     'combine-and-minify-js',
     'copy-favicon',
-    'clean-files'
+    'move-images-to-dist'
 ];
 gulp.task('build', build_tasks, function () {
 
