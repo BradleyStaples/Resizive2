@@ -1,3 +1,7 @@
+// ----------------------------
+// -------  JQUERY UI  --------
+// ----------------------------
+
 .ui-resizable {
     position: relative;
 }
@@ -8,10 +12,9 @@
     width: 24px;
     height: 47px;
     border-radius: $small_spacing;
-    -ms-touch-action: none;
     touch-action: none;
-    background-image: url(/images/handle.png);
     background-color: $white;
+    background-image: url(/images/handle.png);
     background-repeat: no-repeat;
 }
 
@@ -19,13 +22,13 @@
     bottom: -33px;
     left: 50%;
     margin-left: -24px;
-    cursor: ns-resize;
     transform: rotate(90deg);
+    cursor: ns-resize;
 }
 
 .ui-resizable-e {
-    right: -22px;
     top: 50%;
+    right: -22px;
     margin-top: -24px;
     cursor: ew-resize;
 }

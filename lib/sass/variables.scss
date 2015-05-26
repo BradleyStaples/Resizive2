@@ -1,3 +1,7 @@
+// ----------------------------
+// --------  COLORS  ----------
+// ----------------------------
+
 $white: #fff;
 $light_gray: #bbb;
 $med_gray: #555;
@@ -5,9 +9,29 @@ $dark_gray: #333;
 $black: #000;
 $light_blue: #9ed2f5;
 $blue: #59b8f8;
+$dark_blue: darken($blue, 15%);
 $green: #33C350;
+$checkered_bg: #e3e3e3;
+$checkered_bg_2: #f5f5f5;
 
 
-$small_spacing: 6px;
-$title_spacing: 9px;
+// ----------------------------
+// ----  SIZES + TIMES  -------
+// ----------------------------
+
 $font_default: 16px;
+$small_spacing: 5px;
+$med_spacing: 10px;
+$large_spacing: 15px;
+$timing_short: .5s;
+
+
+// ----------------------------
+// --------  MIXINS  ----------
+// ----------------------------
+
+@mixin selection() {
+    text-shadow: rgba($black, 0.5) 2px 2px 0;
+    background: $dark_blue;
+    color: $white;
+}

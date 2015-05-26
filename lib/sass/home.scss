@@ -1,0 +1,20 @@
+// ----------------------------
+// -------  home page  --------
+// ----------------------------
+
+.page {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    min-width: 320px;
+    margin: ($font_default * 2) auto;
+    background: #f8f8f8;
+    color: $dark_gray;
+    border-radius: $small_spacing;
+    padding: $font_default;
+    box-shadow: rgba($blue, .75) 0 0 ($small_spacing/2);
+}
+
+.controls {
+    list-style: none;
+}

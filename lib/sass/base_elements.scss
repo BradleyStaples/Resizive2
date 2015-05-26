@@ -1,0 +1,83 @@
+// ----------------------------
+// -----  BASE ELEMENTS  ------
+// ----------------------------
+
+html {
+    font-size: $font_default;
+    line-height: $font_default + 5;
+    font-family: Helvetica, Arial, sans-serif;
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    background-color: $checkered_bg_2;
+    background-image:
+        linear-gradient(
+            45deg,
+            $checkered_bg 25%,
+            transparent 25%,
+            transparent 75%,
+            $checkered_bg 75%,
+            $checkered_bg),
+        linear-gradient(
+            45deg,
+            $checkered_bg 25%,
+            transparent 25%,
+            transparent 75%,
+            $checkered_bg 75%,
+            $checkered_bg);
+    background-size: 40px 40px;
+    background-position: 0 0, 20px 20px;
+}
+
+::-moz-selection {
+    @include selection();
+}
+
+::selection {
+    @include selection();
+}
+
+p {
+    margin: 0;
+
+    & + p {
+        margin-top: $med_spacing;
+    }
+}
+
+a {
+    color: $blue;
+    text-decoration: none;
+    transition: color $timing_short;
+
+    &:hover {
+        color: $dark_blue;
+        text-decoration: underline;
+        transition: color $timing_short;
+    }
+}
+
+abbr[title] {
+    cursor: help;
+}
+
+label {
+    display: block;
+    margin-top: $small_spacing;
+}
+
+h2 {
+    color: $green;
+}
+
+code {
+    font-family: Courier, monospace;
+    color: $green;
+}

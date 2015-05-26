@@ -1,0 +1,71 @@
+// ----------------------------
+// ---------  HEADER  ---------
+// ----------------------------
+
+.header {
+    box-shadow: rgba($dark_gray, .2) 0 2px 2px;
+    background-image: linear-gradient(to bottom, $blue, $light_blue);
+    height: 58px;
+    padding: $small_spacing;
+    border-bottom: 2px solid darken($blue, 5%);
+}
+
+.titleContainer {
+    display: inline-block;
+    width: 210px;
+    margin: $small_spacing;
+    text-align: center;
+}
+
+.sitetitle {
+    text-shadow: rgba($blue, 0.5) 1px 1px 2px;
+    transition: width 0.3s ease-out;
+    position: relative;
+    width: 150px;
+    margin: 0 auto;
+    padding-bottom: ($small_spacing * 1.5);
+    border-bottom: 3px solid $white;
+    font-size: 1.75rem;
+    color: $white;
+    cursor: pointer;
+
+    a {
+        color: $white;
+    }
+    &:hover {
+        width: 190px;
+    }
+    a:hover {
+        color: $white;
+        text-decoration: none;
+    }
+}
+
+.sitetitle:after,
+.sitetitle:before {
+    position: absolute;
+    content: '';
+    bottom: -10px;
+    display: block;
+    width: 0;
+    height: 0;
+}
+
+.sitetitle:after {
+    right: -$med_spacing;
+    border-top: $med_spacing solid transparent;
+    border-bottom: $med_spacing solid transparent;
+    border-left: $med_spacing solid $white;
+}
+
+.sitetitle:before {
+    left: -$med_spacing;
+    border-top: $med_spacing solid transparent;
+    border-bottom: $med_spacing solid transparent;
+    border-right: $med_spacing solid $white;
+}
+
+.data-entry {
+    display: inline-block;
+    text-align: center;
+}

@@ -4,6 +4,7 @@ var autoprefixer = require('gulp-autoprefixer');
 var clean = require('gulp-clean');
 var concat = require('gulp-concat');
 var gulp = require('gulp');
+var gutil = require('gulp-util');
 var jade = require('gulp-jade');
 var jscs = require('gulp-jscs');
 var jshint = require('gulp-jshint');
@@ -39,6 +40,7 @@ gulp.task('clean-files', function () {
 gulp.task('combine-and-minify-js', ['move-js-to-dist'], function () {
     gulp.src('./dist/javascripts/*.js')
         .pipe(uglify())
+        .on('error', gutil.log)
         .pipe(concat('resizive.js'))
         .pipe(gulp.dest('./dist/javascripts'));
 });
@@ -55,6 +57,7 @@ gulp.task('jade-to-html', function () {
         .pipe(jade({
             pretty: true
         }))
+        .on('error', gutil.log)
         .pipe(gulp.dest('./dist/'));
 });
 
@@ -83,6 +86,7 @@ gulp.task('minifiy-css', ['sass-to-css', 'prefix-css'], function () {
             suffix: '.min'
         }))
         .pipe(minifycss())
+        .on('error', gutil.log)
         .pipe(gulp.dest('./dist/stylesheets'));
 });
 
@@ -90,6 +94,7 @@ gulp.task('minifiy-css', ['sass-to-css', 'prefix-css'], function () {
 gulp.task('minify-svgs', function () {
     gulp.src('./lib/images/*.svg')
         .pipe(svgo())
+        .on('error', gutil.log)
         .pipe(gulp.dest('dist/images'));
 });
 
@@ -109,6 +114,7 @@ gulp.task('move-js-to-dist', function () {
 gulp.task('prefix-css', ['sass-to-css'], function () {
     gulp.src('./dist/stylesheets/*.css')
         .pipe(autoprefixer('last 2 version'))
+        .on('error', gutil.log)
         .pipe(gulp.dest('./dist/stylesheets'));
 });
 
@@ -129,6 +135,7 @@ gulp.task('sass-to-css', function () {
         .pipe(sass({
             style: 'expanded'
         }))
+        .on('error', gutil.log)
         .pipe(sourcemaps.write('./maps'))
         .pipe(gulp.dest('./dist/stylesheets'));
 });

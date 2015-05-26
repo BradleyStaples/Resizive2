@@ -1,23 +1,21 @@
+// ----------------------------
+// -----  FORM CONTROLS  ------
+// ----------------------------
+
 .btn {
     display: inline-block;
-    padding: 4px 12px;
-    margin-bottom: 0;
-    font-size: 14px;
-    line-height: 20px;
+    padding: $small_spacing $med_spacing;
     text-align: center;
     vertical-align: middle;
     cursor: pointer;
     color: $green;
-    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
-    background-color: #f5f5f5;
-    background-image: linear-gradient(to bottom, $white, #e6e6e6);
+    text-shadow: 0 1px 1px transparentize($white, 0.25);
+    background-color: $checkered_bg_2;
+    background-image: linear-gradient(to bottom, $white, $checkered_bg);
     background-repeat: repeat-x;
-    border-color: #e6e6e6 #e6e6e6 #bfbfbf;
-    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-    border: 1px solid #cccccc;
-    border-bottom-color: #b3b3b3;
-    border-radius: 4px;
-    box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+    border: 1px solid $light_gray;
+    border-radius: $small_spacing;
+    box-shadow: inset 0 1px 0 transparentize($white, 0.8), 0 1px 2px transparentize($black, 0.5);
 }
 
 .btn:hover,
@@ -26,13 +24,13 @@
 .btn.active,
 .btn.disabled,
 .btn[disabled] {
-    color: #333333;
-    background-color: #e6e6e6;
+    color: $dark_gray;
+    background-color: $checkered_bg;
 }
 
 .btn:active,
 .btn.active {
-    background-color: #cccccc;
+    background-color: $light_gray;
 }
 
 .btn:hover,
@@ -44,8 +42,8 @@
 }
 
 .btn:focus {
-    outline: thin dotted #333;
-    outline: 5px auto -webkit-focus-ring-color;
+    outline: thin dotted $dark_gray;
+    outline: $small_spacing auto -webkit-focus-ring-color;
     outline-offset: -2px;
 }
 
@@ -53,7 +51,7 @@
 .btn:active {
     background-image: none;
     outline: 0;
-    box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
+    box-shadow: inset 0 2px 4px transparentize($black, 0.85), 0 1px 2px transparentize($black, 0.5);
 }
 
 .btn.disabled,
@@ -65,22 +63,17 @@
     box-shadow: none;
 }
 
-.btn span {
-    border-bottom: .1rem solid $green;
+.btn > span {
+    border-bottom: 2px solid $green;
 }
 
 .url-entry {
-    width: 20rem;
-    border-radius: .25rem;
+    width: 320px;
+    height: 33px;
+    padding: 0 $small_spacing;
+    border-radius: $small_spacing;
 }
 
-.url-entry,
-.button-help {
-    height: 1.8rem;
-    vertical-align: top;
-}
-
-label {
-    display: block;
-    margin-top: 6px;
+.btn-load {
+    font-size: 1.4rem;
 }
