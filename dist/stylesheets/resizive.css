@@ -391,23 +391,24 @@ label {
   display: block;
   width: 24px;
   height: 47px;
-  font-size: 0.1px;
+  border-radius: 6px;
   -ms-touch-action: none;
   touch-action: none;
   background-image: url(/images/handle.png);
+  background-color: #fff;
   background-repeat: no-repeat; }
 
 .ui-resizable-s {
-  bottom: 0;
+  bottom: -33px;
   left: 50%;
   margin-left: -24px;
   cursor: ns-resize;
   transform: rotate(90deg); }
 
 .ui-resizable-e {
-  right: 0;
+  right: -22px;
   top: 50%;
-  margin-top: -12px;
+  margin-top: -24px;
   cursor: ew-resize; }
 
 *, *:before, *:after {
@@ -479,20 +480,19 @@ abbr[title] {
   font-size: 1.75rem; }
 
 .left-space {
-  margin-left: 5px; }
+  margin-left: 6px; }
 
 .header {
   box-shadow: rgba(51, 51, 51, 0.2) 0 2px 2px;
   background-image: linear-gradient(to bottom, #59b8f8, #9ed2f5);
-  height: 52px;
-  margin: 0;
+  height: 58px;
   padding: 6px;
   border-bottom: 2px solid #41aef7; }
 
 .titleContainer {
   display: inline-block;
-  width: 190px;
-  margin: 4px;
+  width: 210px;
+  margin: 6px;
   text-align: center; }
 
 .sitetitle {
@@ -501,9 +501,9 @@ abbr[title] {
   position: relative;
   width: 150px;
   margin: 0 auto;
-  padding-bottom: 8px;
+  padding-bottom: 9px;
   border-bottom: 3px solid #fff;
-  font-size: 2rem;
+  font-size: 1.75rem;
   color: #fff;
   cursor: pointer; }
   .sitetitle a {
@@ -542,9 +542,9 @@ abbr[title] {
   display: inline-block; }
 
 .show-width {
-  width: 60px;
-  height: 30px;
-  padding: 3px;
+  width: 64px;
+  height: 32px;
+  padding: 2px;
   color: #fff;
   font-weight: bold;
   background: transparent;
@@ -557,7 +557,7 @@ abbr[title] {
   border: 2px solid #d4d4d4;
   background: #fff;
   color: #333;
-  border-radius: 4px; }
+  border-radius: 6px; }
 
 .loading {
   display: block;
@@ -569,14 +569,14 @@ abbr[title] {
 .page {
   position: relative;
   width: 100%;
-  max-width: 1000px;
+  max-width: 1200px;
   min-width: 320px;
   margin: 32px auto;
   background: #f8f8f8;
   color: #333;
-  border-radius: 4px;
+  border-radius: 6px;
   padding: 16px;
-  box-shadow: rgba(89, 184, 248, 0.75) 0 0 4px; }
+  box-shadow: rgba(89, 184, 248, 0.75) 0 0 3px; }
 
 h2 {
   color: #33C350; }
@@ -593,6 +593,13 @@ code {
   max-width: 100%;
   max-height: 100%; }
 
+.frame {
+  width: 100%;
+  height: 100%;
+  border-right: 2px solid #bbb;
+  border-bottom: 2px solid #bbb;
+  overflow: hidden; }
+
 .resizer {
   overflow-y: scroll;
   width: 100%;
@@ -604,12 +611,12 @@ code {
 
 footer {
   max-width: 500px;
-  margin: 15px auto 0 auto;
+  margin: 16px auto 0 auto;
   text-align: center; }
 
 .inlineFooter {
   border-top: 1px solid #33C350;
-  padding-top: 15px; }
+  padding-top: 16px; }
 
 .error-shrug {
   font-size: 6rem;

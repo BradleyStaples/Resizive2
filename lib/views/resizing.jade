@@ -5,4 +5,5 @@ block content
 
     .resizerContainer
         img.loading(src='/images/throbber.svg', width='48', height='48')
-        iframe.resizer.hidden(src='#{url}')
+        .frame
+            iframe.resizer.hidden(src='#{url}', height='100%', frameborder='0')

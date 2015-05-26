@@ -7,15 +7,16 @@
     display: block;
     width: 24px;
     height: 47px;
-    font-size: 0.1px;
+    border-radius: $small_spacing;
     -ms-touch-action: none;
     touch-action: none;
     background-image: url(/images/handle.png);
+    background-color: $white;
     background-repeat: no-repeat;
 }
 
 .ui-resizable-s {
-    bottom: 0;
+    bottom: -33px;
     left: 50%;
     margin-left: -24px;
     cursor: ns-resize;
@@ -23,8 +24,8 @@
 }
 
 .ui-resizable-e {
-    right: 0;
+    right: -22px;
     top: 50%;
-    margin-top: -12px;
+    margin-top: -24px;
     cursor: ew-resize;
 }

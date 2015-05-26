@@ -14,7 +14,7 @@ html, body {
     margin: 0;
     padding: 0;
     font-weight: 400;
-    font-size: 16px;
+    font-size: $font_default;
     line-height: 21px;
     font-family: Helvetica, Arial, sans-serif;
 }
@@ -95,22 +95,21 @@ abbr[title] {
 }
 
 .left-space {
-    margin-left: 5px;
+    margin-left: $small_spacing;
 }
 
 .header {
     box-shadow: rgba($dark_gray, .2) 0 2px 2px;
     background-image: linear-gradient(to bottom, $blue, $light_blue);
-    height: 52px;
-    margin: 0;
-    padding: 6px;
+    height: 58px;
+    padding: $small_spacing;
     border-bottom: 2px solid darken($blue, 5%);
 }
 
 .titleContainer {
     display: inline-block;
-    width: 190px;
-    margin: 4px;
+    width: 210px;
+    margin: $small_spacing;
     text-align: center;
 }
 
@@ -120,9 +119,9 @@ abbr[title] {
     position: relative;
     width: 150px;
     margin: 0 auto;
-    padding-bottom: 8px;
+    padding-bottom: ($small_spacing * 1.5);
     border-bottom: 3px solid $white;
-    font-size: 2rem;
+    font-size: 1.75rem;
     color: $white;
     cursor: pointer;
 
@@ -149,17 +148,17 @@ abbr[title] {
 }
 
 .sitetitle:after {
-    right: -9px;
-    border-top: 9px solid transparent;
-    border-bottom: 9px solid transparent;
-    border-left: 9px solid $white;
+    right: -$title_spacing;
+    border-top: $title_spacing solid transparent;
+    border-bottom: $title_spacing solid transparent;
+    border-left: $title_spacing solid $white;
 }
 
 .sitetitle:before {
-    left: -9px;
-    border-top: 9px solid transparent;
-    border-bottom: 9px solid transparent;
-    border-right: 9px solid $white;
+    left: -$title_spacing;
+    border-top: $title_spacing solid transparent;
+    border-bottom: $title_spacing solid transparent;
+    border-right: $title_spacing solid $white;
 }
 
 .data-entry {
@@ -172,9 +171,9 @@ abbr[title] {
 }
 
 .show-width {
-    width: 60px;
-    height: 30px;
-    padding: 3px;
+    width: ($font_default * 4);
+    height: ($font_default * 2);
+    padding: $small_spacing / 3;
     color: $white;
     font-weight: bold;
     background: transparent;
@@ -190,7 +189,7 @@ abbr[title] {
     border: 2px solid lighten($light_gray, 10%);
     background: $white;
     color: $dark_gray;
-    border-radius: 4px;
+    border-radius: $small_spacing;
 }
 
 .loading {
@@ -209,14 +208,14 @@ abbr[title] {
 .page {
     position: relative;
     width: 100%;
-    max-width: 1000px;
+    max-width: 1200px;
     min-width: 320px;
-    margin: 32px auto;
+    margin: ($font_default * 2) auto;
     background: #f8f8f8;
     color: $dark_gray;
-    border-radius: 4px;
-    padding: 16px;
-    box-shadow: rgba($blue, .75) 0 0 4px;
+    border-radius: $small_spacing;
+    padding: $font_default;
+    box-shadow: rgba($blue, .75) 0 0 ($small_spacing/2);
 }
 
 h2 {
@@ -238,6 +237,14 @@ code {
     max-height: 100%;
 }
 
+.frame {
+    width: 100%;
+    height: 100%;
+    border-right: ($small_spacing/3) solid $light_gray;
+    border-bottom: ($small_spacing/3) solid $light_gray;
+    overflow: hidden;
+}
+
 .resizer {
     overflow-y: scroll;
     width: 100%;
@@ -254,13 +261,13 @@ code {
 
 footer {
     max-width: 500px;
-    margin: 15px auto 0 auto;
+    margin: $font_default auto 0 auto;
     text-align: center;
 }
 
 .inlineFooter {
     border-top: 1px solid $green;
-    padding-top: 15px;
+    padding-top: $font_default;
 }
 
 .error-shrug {
