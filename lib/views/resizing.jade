@@ -2,8 +2,8 @@ extends layout
 
 block content
     mixin header('resizing')
-
-    .resizerContainer
-        img.loading(src='/images/throbber.svg', width='48', height='48')
-        .frame
-            iframe.resizer.hidden(src='#{url}', height='100%', frameborder='0')
+    .rulers
+        .resizerContainer
+            img.loading(src='/images/throbber.svg', width='48', height='48')
+            .frame
+                iframe.resizer.hidden(src='#{url}', height='100%', frameborder='0')

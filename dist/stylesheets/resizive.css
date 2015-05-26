@@ -626,5 +626,11 @@ footer {
   .error-shrug:hover {
     transform: rotate(10deg); }
 
+.rulers {
+  padding: 15px 0 0 15px;
+  background-image: url(/images/vertical_ruler.png), url(/images/horizontal_ruler.png);
+  background-position: 0 15px, 15px 0;
+  background-repeat: no-repeat; }
+
 
 /*# sourceMappingURL=maps/resizive.css.map */
