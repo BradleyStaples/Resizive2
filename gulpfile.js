@@ -33,7 +33,8 @@ gulp.task('clean-files', function () {
     return gulp.src(['dist'], {
             read: false
         })
-        .pipe(clean());
+        .pipe(clean())
+        .on('error', gutil.log);
 });
 
 

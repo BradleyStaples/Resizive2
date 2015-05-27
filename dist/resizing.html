@@ -18,18 +18,23 @@
         <h1 title="Resize Responsive Websites" class="sitetitle"><a href="/">Resizive</a></h1>
       </div>
       <div class="data-entry">
-        <div class="button-row">
+        <div class="button-row left-space">
           <button class="btn btn-start"><span>S</span>tart</button>
           <button class="btn btn-resume hidden"><span>R</span>esume</button>
           <button class="btn btn-pause"><span>P</span>ause</button>
-          <button class="btn btn-minus">&laquo;<span>-</span>10</button>
-          <button class="btn btn-plus">&raquo;<span>+</span>10</button>
+          <button class="btn btn-left left-space"><span>&larr;</span></button>
+          <div class="stacked">
+            <button class="btn btn-up half-height"><span>&uarr;</span></button>
+            <button class="btn btn-down half-height"><span>&darr;</span></button>
+          </div>
+          <button class="btn btn-right"><span>&rarr;</span></button>
         </div>
-        <input type="text" title="Set A Specific Width (PX)" class="show-width"/>
+        <input type="text" title="Set A Specific Width (PX)" class="show-width left-space"/>x
+        <input type="text" title="Set A Specific Width (PX)" class="show-height left-space"/>
       </div>
     </header>
     <div class="rulers">
-      <div class="resizerContainer"><img src="/images/throbber.svg" width="48" height="48" class="loading">
+      <div class="resizerContainer animatedDrag"><img src="/images/throbber.svg" width="48" height="48" class="loading">
         <div class="frame">
           <iframe src="undefined" height="100%" frameborder="0" class="resizer hidden"></iframe>
         </div>

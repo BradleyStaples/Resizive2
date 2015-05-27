@@ -6,22 +6,18 @@
     display: inline-block;
 }
 
-.show-width {
-    width: ($font_default * 4);
-    height: ($font_default * 2);
+.show-width,
+.show-height {
+    width: ($med_spacing * 6);
+    height: ($med_spacing * 3);
     padding: $small_spacing / 3;
-    color: $white;
     font-weight: bold;
-    background: transparent;
-    border: none;
-}
-
-.show-width:hover {
-    color: $med_gray;
 }
 
 .show-width:focus,
-.show-width:active {
+.show-width:active,
+.show-height:focus,
+.show-height:active {
     border: 2px solid lighten($light_gray, 10%);
     background: $white;
     color: $dark_gray;
@@ -45,6 +41,10 @@
     position: relative;
     max-width: 100%;
     max-height: 100%;
+
+    &.animatedDrag {
+        transition: width height 0.3s;
+    }
 }
 
 .frame {
@@ -74,4 +74,10 @@
     background-image: url(/images/vertical_ruler.png), url(/images/horizontal_ruler.png);
     background-position: 0 15px, 15px 0;
     background-repeat: no-repeat;
+}
+
+.stacked {
+    display: inline-block;
+    width: 38px;
+    vertical-align: middle;
 }

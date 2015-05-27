@@ -12,7 +12,7 @@ mixin header(page_type)
             if page_type == 'secondary'
                 a.btn.font-large.left-space(href='/config', title='Set Config Data') &#9881;
             if page_type == 'resizing'
-                .button-row
+                .button-row.left-space
                     button.btn.btn-start
                         span S
                         | tart
@@ -22,15 +22,18 @@ mixin header(page_type)
                     button.btn.btn-pause
                         span P
                         | ause
-                    button.btn.btn-minus
-                        | &laquo;
-                        span -
-                        | 10
-                    button.btn.btn-plus
-                        | &raquo;
-                        span +
-                        | 10
-                input.show-width(type='text', title='Set A Specific Width (PX)')
+                    button.btn.btn-left.left-space
+                        span &larr;
+                    .stacked
+                        button.btn.btn-up.half-height
+                            span &uarr;
+                        button.btn.btn-down.half-height
+                            span &darr;
+                    button.btn.btn-right
+                        span &rarr;
+                input.show-width.left-space(type='text', title='Set A Specific Width (PX)')
+                | x
+                input.show-height.left-space(type='text', title='Set A Specific Width (PX)')
 
 
 doctype html

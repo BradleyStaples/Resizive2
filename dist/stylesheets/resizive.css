@@ -462,6 +462,12 @@ code {
 .btn-load {
   font-size: 1.4rem; }
 
+.half-height {
+  width: 100%;
+  padding: 2px 10px;
+  font-size: 0.75rem;
+  line-height: 1.35; }
+
 .ui-resizable {
   position: relative; }
 
@@ -548,19 +554,13 @@ code {
 .button-row {
   display: inline-block; }
 
-.show-width {
-  width: 64px;
-  height: 32px;
+.show-width, .show-height {
+  width: 60px;
+  height: 30px;
   padding: 1.66667px;
-  color: #fff;
-  font-weight: bold;
-  background: transparent;
-  border: none; }
+  font-weight: bold; }
 
-.show-width:hover {
-  color: #555; }
-
-.show-width:focus, .show-width:active {
+.show-width:focus, .show-width:active, .show-height:focus, .show-height:active {
   border: 2px solid #d4d4d4;
   background: #fff;
   color: #333;
@@ -577,6 +577,8 @@ code {
   position: relative;
   max-width: 100%;
   max-height: 100%; }
+  .resizerContainer.animatedDrag {
+    transition: width height 0.3s; }
 
 .frame {
   width: 100%;
@@ -599,6 +601,11 @@ code {
   background-image: url(/images/vertical_ruler.png), url(/images/horizontal_ruler.png);
   background-position: 0 15px, 15px 0;
   background-repeat: no-repeat; }
+
+.stacked {
+  display: inline-block;
+  width: 38px;
+  vertical-align: middle; }
 
 .page {
   position: relative;
