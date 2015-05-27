@@ -6,55 +6,57 @@ var Resizive = function (url) {
     this.assignElements();
     this.setBindings();
     this.setKeyBindings();
+    this.createConfig(url);
+    this.setDimensionsFromQueryString();
 
+    // wait for iframe to load to start up the real fun
+    this.elements.resizer.one('load', function () {
+        this.elements.body.addClass(this.config.classResize);
+        this.elements.img.addClass(this.config.classHidden);
+        this.elements.resizer.removeClass(this.config.classHidden);
+        this.keepInBounds(false, 'both');
+        this.setupDragToResize();
+        this.animator(1); // 1ms animation duration so it appears instantly
+        this.pause();
+    }.bind(this));
+};
+
+Resizive.prototype.setupDragToResize = function () {
+    this.elements.container.resizable({
+        handles: 'e, s',
+        minWidth: this.config.minWidth,
+        maxWidth: this.config.maxWidth,
+        minHeight: this.config.minHeight,
+        maxHeight: this.config.maxHeight,
+        iframeFix: true,
+        start: function (event, ui) {
+            this.elements.container.removeClass('animatedDrag');
+            this.elements.resizer.css('pointer-events', 'none');
+        }.bind(this),
+        stop: function (event, ui) {
+            this.elements.container.addClass('animatedDrag');
+            this.elements.resizer.css('pointer-events', 'auto');
+            this.updateWidth(this.elements.container.width());
+            this.updateHeight(this.elements.container.height());
+            this.updateUri();
+        }.bind(this)
+    });
+};
+
+Resizive.prototype.normalizeUrl = function (url) {
     // if we have a url in the querystring, but not one via constructor,
-    // it's like a page reload or bookmark. use url from querystring
+    // it's likely a page reload or bookmark. use url from querystring
     var queryUrl = this.getSiteUrlFromQueryString();
     if (queryUrl && !url) {
         url = queryUrl;
     }
 
-    // make sure url has a protocol. it could be https, but pretend
-    // it's http if user doesn't enter any protocol for now
+    // make sure url has a protocol. it might be https, but pretend
+    // it's http if user doesn't enter any protocol
     if (url.indexOf('://') === -1) {
         url = 'http://' + url;
     }
-
-    this.constructor.prototype.config = this.createConfig(url);
-
-    this.setDimensionsFromQueryString();
-
-    this.elements.resizer.one('load', function () {
-        this.elements.body.addClass(this.config.classResize);
-        this.elements.img.addClass(this.config.classHidden);
-        this.elements.resizer.removeClass(this.config.classHidden);
-
-        this.keepInBounds(false, 'both');
-
-        this.elements.container.resizable({
-            handles: 'e, s',
-            minWidth: this.config.minWidth,
-            maxWidth: this.config.maxWidth,
-            minHeight: this.config.minHeight,
-            maxHeight: this.config.maxHeight,
-            iframeFix: true,
-            start: function (event, ui) {
-                this.elements.container.removeClass('animatedDrag');
-                this.elements.resizer.css('pointer-events', 'none');
-            }.bind(this),
-            stop: function (event, ui) {
-                this.elements.container.addClass('animatedDrag');
-                this.elements.resizer.css('pointer-events', 'auto');
-                this.updateWidth(this.elements.container.width());
-                this.updateHeight(this.elements.container.height());
-                this.updateUri();
-            }.bind(this)
-        });
-
-        // set to size according to potential querystring with 1ms animation duration
-        this.animator(1);
-        this.pause();
-    }.bind(this));
+    return url;
 };
 
 Resizive.prototype.selectors = {
@@ -104,17 +106,10 @@ Resizive.prototype.setBindings = function () {
 };
 
 Resizive.prototype.createConfig = function (url) {
-
     var handle_offset = 35;
 
-    // set iframe to be 85% of window height, enough so that bottom
-        // handle to resize is obvious but not most screens bottom edge
-    this.elements.container.css({
-        height:  + 'px'
-    });
-
-    return {
-        url: url,
+    this.constructor.prototype.config = {
+        url: this.normalizeUrl(url),
         timer: null,
         paused: false,
         resizing: false,
