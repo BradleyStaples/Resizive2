@@ -22,7 +22,7 @@ var Resizive = function (url) {
 
     this.constructor.prototype.config = this.createConfig(url);
 
-    this.setWidthFromQueryString();
+    this.setDimensionsFromQueryString();
 
     this.elements.resizer.one('load', function () {
         this.elements.body.addClass(this.config.classResize);
@@ -136,6 +136,9 @@ Resizive.prototype.createConfig = function (url) {
         // need room for handle, so don't use 100% of window width
         currWidth: $(window).width() - handle_offset,
         maxWidth: 3000
+
+        // add max animation width
+        // add max animation height
     };
 };
 
@@ -155,10 +158,13 @@ Resizive.prototype.getSiteUrlFromQueryString = function () {
     return queryObject.url || null;
 };
 
-Resizive.prototype.setWidthFromQueryString = function () {
+Resizive.prototype.setDimensionsFromQueryString = function () {
     var queryObject = this.getQueryStringObject();
     if (queryObject.hasOwnProperty('width') && !isNaN(queryObject.width)) {
         this.updateWidth(queryObject.width);
+    }
+    if (queryObject.hasOwnProperty('height') && !isNaN(queryObject.height)) {
+        this.updateHeight(queryObject.height);
     }
 };
 
@@ -187,7 +193,7 @@ Resizive.prototype.animator = function (duration) {
         // add showHeight
     }.bind(this));
     var hash = '#width=' + encodeURIComponent(this.config.currWidth);
-    // add width to hash
+    hash += '&height=' + encodeURIComponent(this.config.currHeight);
     window.location.hash = hash;
 };
 
@@ -280,13 +286,19 @@ Resizive.prototype.updateDirection = function (horiontalDirection, verticalDirec
 };
 
 Resizive.prototype.updateMaxWidth = function () {
-    this.config.max = $(window).width();
+    this.config.maxWidth = $(window).width();
 };
 
 Resizive.prototype.updateWidth = function (newWidth) {
     newWidth = parseInt(newWidth, 10);
     this.config.currWidth = newWidth;
     this.elements.showWidth.val(newWidth);
+};
+
+Resizive.prototype.updateHeight = function (newHeight) {
+    newHeight = parseInt(newHeight, 10);
+    this.config.currHeight = newHeight;
+    this.elements.showHeight.val(newHeight);
 };
 
 Resizive.prototype.setState = function (is_resizing) {
