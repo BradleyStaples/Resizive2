@@ -8,7 +8,7 @@
 
 .show-width,
 .show-height {
-    width: ($med_spacing * 6);
+    width: ($med_spacing * 5);
     height: ($med_spacing * 3);
     padding: $small_spacing / 3;
     font-weight: bold;
@@ -47,14 +47,6 @@
     }
 }
 
-.frame {
-    width: 100%;
-    height: 100%;
-    border-right: ($small_spacing/3) solid $light_gray;
-    border-bottom: ($small_spacing/3) solid $light_gray;
-    overflow: hidden;
-}
-
 .resizer {
     overflow-y: scroll;
     width: 100%;
@@ -66,6 +58,14 @@
     .data-entry {
         margin: 0;
         text-align: left;
+    }
+
+    .frame {
+        width: 100%;
+        height: 100%;
+        border-right: ($small_spacing/3) solid $light_gray;
+        border-bottom: ($small_spacing/3) solid $light_gray;
+        overflow: hidden;
     }
 }
 
@@ -80,4 +80,8 @@
     display: inline-block;
     width: 38px;
     vertical-align: middle;
+}
+
+.btn-refresh .text {
+    transform: rotate(90deg);
 }

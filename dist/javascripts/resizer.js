@@ -8,7 +8,10 @@ var Resizive = function (url) {
     this.setKeyBindings();
     this.createConfig(url);
     this.setDimensionsFromQueryString();
+    this.waitForIframeToLoad();
+};
 
+Resizive.prototype.waitForIframeToLoad = function () {
     // wait for iframe to load to start up the real fun
     this.elements.resizer.one('load', function () {
         this.elements.body.addClass(this.config.classResize);
@@ -67,6 +70,7 @@ Resizive.prototype.selectors = {
     rightButton: '.btn-right',
     uoButton: '.btn-up',
     downButton: '.btn-down',
+    refreshButton: '.btn-refresh',
     showWidth: '.show-width',
     showHeight: '.show-height',
     container: '.resizerContainer',
@@ -93,6 +97,7 @@ Resizive.prototype.setBindings = function () {
     this.elements.body.on('click', this.selectors.leftButton, this.left.bind(this));
     this.elements.body.on('click', this.selectors.upButton, this.up.bind(this));
     this.elements.body.on('click', this.selectors.downButton, this.down.bind(this));
+    this.elements.body.on('click', this.selectors.refreshButton, this.refresh.bind(this));
 
     this.elements.body.on('blur', this.selectors.showWidth, this.setWidth.bind(this));
     this.elements.body.on('keydown', this.selectors.showWidth, function (event) {
@@ -288,12 +293,14 @@ Resizive.prototype.updateMaxWidth = function () {
     this.config.maxWidth = $(window).width();
 };
 
+// make into syncWidth, with option to sync to: uri, container.width(), or currWidth
 Resizive.prototype.updateWidth = function (newWidth) {
     newWidth = parseInt(newWidth, 10);
     this.config.currWidth = newWidth;
     this.elements.showWidth.val(newWidth);
 };
 
+// make into syncHeight, with option to sync to: uri, container.height(), or currHeight
 Resizive.prototype.updateHeight = function (newHeight) {
     newHeight = parseInt(newHeight, 10);
     this.config.currHeight = newHeight;
@@ -360,4 +367,24 @@ Resizive.prototype.up = function () {
 Resizive.prototype.down = function () {
     this.updateDirection(null, +1);
     this.resize('vertical', 'stepDuration', 'stepIncrememnt');
+};
+
+Resizive.prototype.refresh = function () {
+    // reset some elements to be in their default state while
+    // the iframe reloads itself
+    this.elements.container.resizable('destroy');
+    this.elements.container.attr('style', '');
+    this.elements.body.removeClass(this.config.classResize);
+    this.elements.img.removeClass(this.config.classHidden);
+    this.elements.resizer.addClass(this.config.classHidden);
+
+    var random = Math.ceil(Math.random() * 1000000);
+    var cache_breaker = 'cache_breaker=' + Date.now() + random;
+    var concatenator = '?';
+    if (this.config.url.indexOf('?') > 0) {
+        concatenator += '&';
+    }
+    var new_source = this.config.url + concatenator + cache_breaker;
+    this.elements.resizer.attr({src: new_source});
+    this.waitForIframeToLoad(true);
 };

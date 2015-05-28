@@ -555,7 +555,7 @@ code {
   display: inline-block; }
 
 .show-width, .show-height {
-  width: 60px;
+  width: 50px;
   height: 30px;
   padding: 1.66667px;
   font-weight: bold; }
@@ -580,13 +580,6 @@ code {
   .resizerContainer.animatedDrag {
     transition: width height 0.3s; }
 
-.frame {
-  width: 100%;
-  height: 100%;
-  border-right: 1.66667px solid #bbb;
-  border-bottom: 1.66667px solid #bbb;
-  overflow: hidden; }
-
 .resizer {
   overflow-y: scroll;
   width: 100%;
@@ -595,6 +588,12 @@ code {
 .resizing .data-entry {
   margin: 0;
   text-align: left; }
+.resizing .frame {
+  width: 100%;
+  height: 100%;
+  border-right: 1.66667px solid #bbb;
+  border-bottom: 1.66667px solid #bbb;
+  overflow: hidden; }
 
 .rulers {
   padding: 15px 0 0 15px;
@@ -606,6 +605,9 @@ code {
   display: inline-block;
   width: 38px;
   vertical-align: middle; }
+
+.btn-refresh .text {
+  transform: rotate(90deg); }
 
 .page {
   position: relative;
