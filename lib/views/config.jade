@@ -7,19 +7,22 @@ block content
         a.btn.right(href='/') &lArr; Home
         h2.center Resizive Config
 
-        form.configForm(method='post', action='/config/set')
+        form.configForm(method='post', action='#')
             label
                | Increment Size
-               input(type='text', value='50', name='increment')
+               input.integer-only(type='text', name='increment')
             label
                | Animation Speed (ms)
-               input(type='text', value='50', name='speed')
+               input.integer-only(type='text', name='speed')
             label
                | Show Scrollbars?
-               input.scrollbars(type='checkbox')
+               input.scrollbars(type='checkbox', name='scrollbars')
             label
                | Show Rulers?
-               input.rulers(type='checkbox')
+               input.rulers(type='checkbox', name='rulers')
+            label
+               | Snap To Increment?
+               input.snap(type='checkbox', name='snap')
             input.btn.submit(type='submit')
 
         include ./footer.jade

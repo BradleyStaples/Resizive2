@@ -22,18 +22,21 @@
     </header>
     <div class="page config"><a href="/" class="btn right">&lArr; Home</a>
       <h2 class="center">Resizive Config</h2>
-      <form method="post" action="/config/set" class="configForm">
+      <form method="post" action="#" class="configForm">
         <label>Increment Size
-          <input type="text" value="50" name="increment">
+          <input type="text" name="increment" class="integer-only">
         </label>
         <label>Animation Speed (ms)
-          <input type="text" value="50" name="speed">
+          <input type="text" name="speed" class="integer-only">
         </label>
         <label>Show Scrollbars?
-          <input type="checkbox" class="scrollbars">
+          <input type="checkbox" name="scrollbars" class="scrollbars">
         </label>
         <label>Show Rulers?
-          <input type="checkbox" class="rulers">
+          <input type="checkbox" name="rulers" class="rulers">
+        </label>
+        <label>Snap To Increment?
+          <input type="checkbox" name="snap" class="snap">
         </label>
         <input type="submit" class="btn submit">
       </form>
@@ -53,5 +56,7 @@
           var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
     </script>
+    <script src="/javascripts/storage.js"></script>
+    <script src="/javascripts/config.js"></script>
   </body>
 </html>
