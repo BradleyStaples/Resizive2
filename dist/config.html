@@ -23,11 +23,17 @@
     <div class="page config"><a href="/" class="btn right">&lArr; Home</a>
       <h2 class="center">Resizive Config</h2>
       <form method="post" action="#" class="configForm">
-        <label>Increment Size
+        <label>Increment Size in PX (Animation)
           <input type="text" name="increment" class="integer-only">
         </label>
-        <label>Animation Speed (ms)
-          <input type="text" name="speed" class="integer-only">
+        <label>Transition Duration in MS (Animation)
+          <input type="text" name="duration" class="integer-only">
+        </label>
+        <label>Increment Size in PX (Button Press)
+          <input type="text" name="stepincrement" class="integer-only">
+        </label>
+        <label>Transition Duration in MS (Button Press)
+          <input type="text" name="stepduration" class="integer-only">
         </label>
         <label>Show Scrollbars?
           <input type="checkbox" name="scrollbars" class="scrollbars">
@@ -39,6 +45,7 @@
           <input type="checkbox" name="snap" class="snap">
         </label>
         <input type="submit" class="btn submit">
+        <div class="succes invisible">Your config values have been saved.</div>
       </form>
       <footer class="inlineFooter">
         <p class="font-small center">Developed by <a href="http://bradleystapl.es">Bradley Staples</a>. For comments, feedback, or questions visit my site and contact me, or I'm on Twitter as <a href="https://twitter.com/#!/bradleystaples">@BradleyStaples</a>.

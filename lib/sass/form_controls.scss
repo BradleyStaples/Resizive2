@@ -84,3 +84,19 @@
     font-size: 0.75rem;
     line-height: 1.35;
 }
+
+.succes {
+    width: 300px;
+    height: 40px;
+    padding: $med_spacing;
+    color: $white;
+    background-color: $dark_blue;
+    transition: opacity 0.75s, height 0.75s, padding 0.75s;
+
+    &.invisible {
+        transition: opacity 0.75s, height 0.75s, padding 0.75s;
+        opacity: 0;
+        height: 0;
+        padding: 0;
+    }
+}
