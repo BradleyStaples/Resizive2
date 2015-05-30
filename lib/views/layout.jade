@@ -7,7 +7,7 @@ mixin header(page_type)
             if page_type == 'index'
                 form(method='get', action='/resizing')
                     input.url-entry(type='url', name='url', placeholder='Enter Website URL')
-                    button.btn.btn-load(type='submit') &#9851;
+                    button.btn.btn-load(type='submit') Go
                     a.btn.font-large.left-space(href='/config', title='Set Config Data') &#9881;
             if page_type == 'secondary'
                 a.btn.font-large.left-space(href='/config', title='Set Config Data') &#9881;

@@ -39,9 +39,6 @@
     "requirePaddingNewlinesBeforeKeywords": true,
 
     "requirePaddingNewlinesBeforeKeywords": ["do", "for", "switch", "try", "while", "with", "typeof", "function"],
-    "requirePaddingNewLinesBeforeLineComments": {
-        "allExcept": "firstAfterCurly"
-    },
     "requirePaddingNewLinesInObjects": true,
     "requireParenthesesAroundIIFE": true,
     "requireSemicolons": true,

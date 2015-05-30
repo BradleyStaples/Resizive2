@@ -1,63 +1,77 @@
+/* global window, localStorage */
+
 'use strict';
 
-var resiziveStorage = {
-    _INITIAL_VALUES: {
-        increment: 50,
-        duration: 100,
-        stepincrement: 10,
-        stepduration: 50,
-        scrollbars: true,
-        rulers: true,
-        snap: false
-    },
-    _COERCIONS: {
-        // localStorage coerces to strings, so force them back to sane values
-        increment: function (val) {
-            return parseInt(val, 10);
-        },
-        duration: function (val) {
-            return parseInt(val, 10);
-        },
-        stepincrement: function (val) {
-            return parseInt(val, 10);
-        },
-        stepduration: function (val) {
-            return parseInt(val, 10);
-        },
-        scrollbars: function (val) {
-            return val === 'true';
-        },
-        rulers: function (val) {
-            return val === 'true';
-        },
-        snap: function (val) {
-            return val === 'true';
-        }
-    },
-    _getValue: function (key) {
-        var base = resiziveStorage._INITIAL_VALUES;
-        var val = localStorage.getItem(key) ? localStorage.getItem(key) : base[key];
-        return resiziveStorage._COERCIONS[key](val);
-    },
-    // usage:
-    // getValues() - gets *all* values as object map
-    getValues: function () {
-        var keys = Object.keys(resiziveStorage._INITIAL_VALUES);
+(function () {
 
-        // return the values as an object
+    var coerceInteger = function (val) {
+        // coerce integers back to boolean from strings
+        return parseInt(val, 10);
+    };
+
+    var coerceBoolean = function (val) {
+        // coerce strings back to boolean from strings
+        return val === 'true';
+    };
+
+    // methods to coerce values from strings back into sane values
+    var coerceValues = {
+        animation_increment: coerceInteger,
+        animation_duration: coerceInteger,
+        step_increment: coerceInteger,
+        step_duration: coerceInteger,
+        scrollbars: coerceBoolean,
+        rulers: coerceBoolean,
+        snap: coerceBoolean
+    };
+
+
+    var getValue = function (key) {
+        var base = this.BASE_VALUES;
+        var value = localStorage.getItem(key) ? localStorage.getItem(key) : base[key];
+        return coerceValues[key](value);
+    };
+
+    // constructor function
+    var ResiziveStorage = function (keyboard_events, key_map) {
+        this.defineBaseValues();
+    };
+
+    ResiziveStorage.prototype.defineBaseValues = function () {
+        this.BASE_VALUES = {
+            animation_increment: 50,
+            animation_duration: 100,
+            step_increment: 10,
+            step_duration: 50,
+            scrollbars: true,
+            rulers: true,
+            snap: false
+        };
+    };
+
+    // usage:
+    // getValues() - gets all local storage values as object map
+    ResiziveStorage.prototype.getValues = function () {
+        var keys = Object.keys(this.BASE_VALUES);
+
+        // get each value in an object, and return the entire object
         var values = {};
         keys.forEach(function (key) {
-            values[key] = resiziveStorage._getValue(key);
-        });
+            values[key] = getValue.call(this, key);
+        }.bind(this));
         return values;
-    },
-    // expects a dictionary object mapping keys to values:
-    // example: {increment: 10, snap: true}
-    setValues: function (map) {
+    };
+
+    // usage: setValues(map)
+    // map: a dictionary object mapping keys to values
+    //      example: {increment: 10, snap: true}
+    ResiziveStorage.prototype.setValues = function (map) {
+        // go through each value in the map and save to localStorage
         Object.keys(map).forEach(function (key) {
             var value = map[key];
             localStorage.setItem(key, value);
         });
-    }
-};
+    };
 
+    window.ResiziveStorage = ResiziveStorage;
+}());
