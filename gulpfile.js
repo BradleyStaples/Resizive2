@@ -135,7 +135,7 @@ gulp.task('start-prod', function () {
         script: './bin/www',
         env: {
             NODE_ENV: 'production',
-            PORT: '80'
+            PORT: '8080'
         }
     });
 });
