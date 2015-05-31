@@ -130,6 +130,17 @@ gulp.task('start-dev', function () {
 });
 
 
+gulp.task('start-prod', function () {
+    nodemon({
+        script: './bin/www',
+        env: {
+            NODE_ENV: 'production',
+            PORT: '80'
+        }
+    });
+});
+
+
 gulp.task('sass-to-css', function () {
     gulp.src('./lib/sass/resizive.scss')
         .pipe(sourcemaps.init())
@@ -188,5 +199,13 @@ var build_tasks = [
     'move-images-to-dist'
 ];
 gulp.task('build', build_tasks, function () {
+
+});
+
+
+var prod_tasks = [
+    'start-prod'
+];
+gulp.task('run-prod', prod_tasks, function () {
 
 });
