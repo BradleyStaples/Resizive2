@@ -41,6 +41,7 @@
     position: relative;
     max-width: 100%;
     max-height: 100%;
+    margin: 0 auto;
 }
 
 .resizer {
@@ -63,8 +64,8 @@
     .frame {
         width: 100%;
         height: 100%;
-        border-right: ($small_spacing/3) solid $light_gray;
-        border-bottom: ($small_spacing/3) solid $light_gray;
+        border: ($small_spacing/3) solid $light_gray;
+        border-top: none;
         overflow: hidden;
     }
 }
