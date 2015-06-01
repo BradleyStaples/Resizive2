@@ -2,7 +2,6 @@
 <html>
   <head>
     <title></title>
-    <link rel="stylesheet" href="/stylesheets/resizive.css">
     <meta charset="utf-8">
     <meta author="Bradley Staples">
     <meta description="Enables easier detection of content-based breakpoints for media queries in regards to responsively designed fluid-width websites.">
@@ -17,7 +16,11 @@
       <div class="titleContainer">
         <h1 title="Resize Responsive Websites" class="sitetitle"><a href="/">Resizive</a></h1>
       </div>
-      <div class="data-entry"><a href="/config" title="Set Config Data" class="btn font-large left-space">&#9881;</a>
+      <div class="data-entry left-space">
+        <form method="get" action="/resizing">
+          <input type="url" name="url" placeholder="Enter Website URL" class="url-entry"/>
+          <button type="submit" class="btn btn-load left-space">Go</button><a href="/config" title="Set Config Data" class="btn font-large left-space">&#9881;</a>
+        </form>
       </div>
     </header>
     <div class="page">

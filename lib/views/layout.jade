@@ -3,14 +3,12 @@ mixin header(page_type)
         .titleContainer
             h1.sitetitle(title='Resize Responsive Websites')
                 a(href='/') Resizive
-        .data-entry
+        .data-entry.left-space
             if page_type == 'index'
                 form(method='get', action='/resizing')
                     input.url-entry(type='url', name='url', placeholder='Enter Website URL')
-                    button.btn.btn-load(type='submit') Go
+                    button.btn.btn-load.left-space(type='submit') Go
                     a.btn.font-large.left-space(href='/config', title='Set Config Data') &#9881;
-            if page_type == 'secondary'
-                a.btn.font-large.left-space(href='/config', title='Set Config Data') &#9881;
             if page_type == 'resizing'
                 .button-row.left-space
                     button.btn.btn-start
@@ -42,7 +40,6 @@ doctype html
 html
     head
         title= title
-        link(rel='stylesheet', href='/stylesheets/resizive.css')
         meta(charset='utf-8')
         meta(author='Bradley Staples')
         meta(description='Enables easier detection of content-based breakpoints for media queries in regards to responsively designed fluid-width websites.')
