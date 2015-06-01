@@ -3,7 +3,7 @@ extends layout
 block content
     mixin header('resizing')
     .rulers
-        .resizerContainer.animatedDrag
+        .resizerContainer.transitionable
             img.loading(src='/images/throbber.svg', width='48', height='48')
             .frame
                 iframe.resizer.hidden(src='#{url}', height='100%', frameborder='0')

@@ -68,6 +68,10 @@
         border-top: none;
         overflow: hidden;
     }
+
+    .transitionable {
+        transition: width .5s, height .5s;
+    }
 }
 
 .rulers.showRulers {

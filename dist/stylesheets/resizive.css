@@ -605,6 +605,8 @@ code {
   border: 1.66667px solid #bbb;
   border-top: none;
   overflow: hidden; }
+.resizing .transitionable {
+  transition: width .5s, height .5s; }
 
 .rulers.showRulers {
   padding: 15px 0 0 15px;
