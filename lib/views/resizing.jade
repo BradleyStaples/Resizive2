@@ -3,6 +3,8 @@ extends layout
 block content
     mixin header('resizing')
     .rulers
+        .rulerHorizontal
+        .rulerVertical
         .resizerContainer.transitionable
             img.loading(src='/images/throbber.svg', width='48', height='48')
             .frame
