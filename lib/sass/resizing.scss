@@ -2,22 +2,22 @@
 // -----  RESIZING PAGE  ------
 // ----------------------------
 
-.button-row {
+.buttonRow {
     display: inline-block;
 }
 
-.show-width,
-.show-height {
+.showWidth,
+.showHeight {
     width: ($med_spacing * 5);
     height: ($med_spacing * 3);
     padding: $small_spacing / 3;
     font-weight: bold;
 }
 
-.show-width:focus,
-.show-width:active,
-.show-height:focus,
-.show-height:active {
+.showWidth:focus,
+.showWidth:active,
+.showHeight:focus,
+.showHeight:active {
     border: 2px solid lighten($light_gray, 10%);
     background: $white;
     color: $dark_gray;
@@ -27,14 +27,6 @@
 .loading {
     display: block;
     margin: 150px auto 0 auto;
-}
-
-.paused {
-
-    .btn-plus,
-    .btn-minus {
-        display: inline-block;
-    }
 }
 
 .resizerContainer {
@@ -55,7 +47,7 @@
 
 .resizing {
 
-    .data-entry {
+    .dataEntry {
         margin: 0;
         text-align: left;
     }
@@ -111,6 +103,6 @@
     vertical-align: middle;
 }
 
-.btn-refresh .text {
+.btnRefresh .text {
     transform: rotate(90deg);
 }

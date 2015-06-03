@@ -18,32 +18,15 @@
     text-align: center;
 }
 
-.blockCenter {
-    display: block;
-    margin: 0 auto;
-}
-
-.font-small {
+.fontSmall {
     font-size: 0.75rem;
     line-height: 1.35;
 }
 
-.font-large {
+.fontLarge {
     font-size: 1.75rem;
 }
 
-.top-space {
-    margin-top: $small_spacing;
-}
-
-.right-space {
-    margin-right: $small_spacing;
-}
-
-.bottom-space {
-    margin-bottom: $small_spacing;
-}
-
-.left-space {
+.leftSpace {
     margin-left: $small_spacing;
 }

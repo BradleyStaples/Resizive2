@@ -178,7 +178,6 @@ gulp.task('default', default_tasks, function () {
 
 
 var build_tasks = [
-    'clean-files',
     'verify',
     'minifiy-css',
     'minify-svgs',

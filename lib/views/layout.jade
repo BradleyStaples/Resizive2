@@ -1,40 +1,40 @@
 mixin header(page_type)
     header.header
         .titleContainer
-            h1.sitetitle(title='Resize Responsive Websites')
+            h1.siteTitle(title='Resize Responsive Websites')
                 a(href='/') Resizive
-        .data-entry.left-space
+        .dataEntry.leftSpace
             if page_type == 'index'
                 form(method='get', action='/resizing')
-                    input.url-entry(type='url', name='url', placeholder='Enter Website URL')
-                    button.btn.btn-load.left-space(type='submit') Go
-                    a.btn.font-large.left-space(href='/config', title='Set Config Data') &#9881;
+                    input.urlEntry(type='url', name='url', placeholder='Enter Website URL')
+                    button.btn.btn-load.leftSpace(type='submit') Go
+                    a.btn.fontLarge.leftSpace(href='/config', title='Set Config Data') &#9881;
             if page_type == 'resizing'
-                .button-row.left-space
-                    button.btn.btn-start
+                .buttonRow.leftSpace
+                    button.btn.btnStart
                         span S
                         | tart
-                    button.btn.btn-resume.hidden
+                    button.btn.btnResume.hidden
                         span R
                         | esume
-                    button.btn.btn-pause
+                    button.btn.btnPause
                         span P
                         | ause
-                    button.btn.btn-left.left-space
+                    button.btn.btnLeft.leftSpace
                         span &larr;
                     .stacked
-                        button.btn.btn-up.half-height
+                        button.btn.btnUp.halfHeight
                             span &uarr;
-                        button.btn.btn-down.half-height
+                        button.btn.btnDown.halfHeight
                             span &darr;
-                    button.btn.btn-right
+                    button.btn.btnRight
                         span &rarr;
-                input.show-width.left-space(type='text', title='Set A Specific Width (PX)')
+                input.showWidth.leftSpace(type='text', title='Set A Specific Width (PX)')
                 | x
-                input.show-height.left-space(type='text', title='Set A Specific Width (PX)')
-                button.btn.btn-refresh.left-space
-                    .text.font-large &#8635;
-                button.btn.btn-rotate.left-space Rotate
+                input.showHeight.leftSpace(type='text', title='Set A Specific Width (PX)')
+                button.btn.btnRefresh.leftSpace
+                    .text.fontLarge &#8635;
+                button.btn.btnRotate.leftSpace Rotate
 
 doctype html
 html

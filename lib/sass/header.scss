@@ -17,7 +17,7 @@
     text-align: center;
 }
 
-.sitetitle {
+.siteTitle {
     text-shadow: rgba($blue, 0.5) 1px 1px 2px;
     transition: width 0.3s ease-out;
     position: relative;
@@ -41,8 +41,8 @@
     }
 }
 
-.sitetitle:after,
-.sitetitle:before {
+.siteTitle:after,
+.siteTitle:before {
     position: absolute;
     content: '';
     bottom: -10px;
@@ -51,21 +51,21 @@
     height: 0;
 }
 
-.sitetitle:after {
+.siteTitle:after {
     right: -$med_spacing;
     border-top: $med_spacing solid transparent;
     border-bottom: $med_spacing solid transparent;
     border-left: $med_spacing solid $white;
 }
 
-.sitetitle:before {
+.siteTitle:before {
     left: -$med_spacing;
     border-top: $med_spacing solid transparent;
     border-bottom: $med_spacing solid transparent;
     border-right: $med_spacing solid $white;
 }
 
-.data-entry {
+.dataEntry {
     display: inline-block;
     text-align: center;
 }
