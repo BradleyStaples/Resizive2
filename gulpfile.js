@@ -14,19 +14,7 @@ var rename = require('gulp-rename');
 var sass = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps');
 var svgo = require('gulp-svgo');
-var tinylr = require('tiny-lr')();
 var uglify = require('gulp-uglify');
-
-
-var notifyLiveReload = function (event) {
-    var fileName = require('path').relative(__dirname, event.path);
-
-    tinylr.changed({
-        body: {
-            files: [fileName]
-        }
-    });
-};
 
 
 gulp.task('clean-files', function () {
@@ -73,11 +61,6 @@ gulp.task('lint-js', function () {
 gulp.task('lint-js-styles', function () {
     return gulp.src(['./*.js', './lib/js/*.js'])
         .pipe(jscs());
-});
-
-
-gulp.task('live-reload', function () {
-    return tinylr.listen(3001); // ./bin/www uses 3000
 });
 
 
@@ -147,9 +130,6 @@ gulp.task('watch-files', function () {
     gulp.watch('./lib/sass/*.scss', ['prefix-css']);
     gulp.watch('./lib/js/*.js', ['move-js-to-dist']);
     gulp.watch('./lib/views/*.jade', ['jade-to-html']);
-    gulp.watch('./dist/*.html', notifyLiveReload);
-    gulp.watch('./dist/javascripts/*.js', notifyLiveReload);
-    return gulp.watch('./dist/stylesheets/*.css', notifyLiveReload);
 });
 
 
@@ -169,7 +149,6 @@ var default_tasks = [
     'move-images-to-dist',
     'start-dev',
     'jade-to-html',
-    'live-reload',
     'watch-files'
 ];
 gulp.task('default', default_tasks, function () {

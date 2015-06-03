@@ -36,7 +36,6 @@
     "serve-favicon": "^2.2.0"
   },
   "devDependencies": {
-    "connect-livereload": "^0.5.3",
     "gulp": "^3.8.11",
     "gulp-autoprefixer": "^2.2.0",
     "gulp-clean": "^0.3.1",
@@ -51,8 +50,7 @@
     "gulp-sourcemaps": "^1.5.2",
     "gulp-svgo": "^0.1.1",
     "gulp-uglify": "^1.2.0",
-    "gulp-util": "^3.0.4",
-    "tiny-lr": "^0.1.5"
+    "gulp-util": "^3.0.4"
   },
   "preferGlobal": false,
   "private": true,
