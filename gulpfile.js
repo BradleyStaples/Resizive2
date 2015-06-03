@@ -1,7 +1,7 @@
 'use strict';
 
 var autoprefixer = require('gulp-autoprefixer');
-var clean = require('gulp-clean');
+var del = require('del');
 var concat = require('gulp-concat');
 var gulp = require('gulp');
 var gutil = require('gulp-util');
@@ -17,12 +17,8 @@ var svgo = require('gulp-svgo');
 var uglify = require('gulp-uglify');
 
 
-gulp.task('clean-files', function () {
-    return gulp.src(['dist'], {
-            read: false
-        })
-        .pipe(clean())
-        .on('error', gutil.log);
+gulp.task('clean-files', function (cb) {
+    return del(['dist/**/*'], cb);
 });
 
 
@@ -157,6 +153,7 @@ gulp.task('default', default_tasks, function () {
 
 
 var build_tasks = [
+    'clean-files',
     'verify',
     'minifiy-css',
     'minify-svgs',
