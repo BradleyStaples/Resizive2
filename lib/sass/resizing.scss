@@ -85,19 +85,23 @@
     .rulerHorizontal,
     .rulerVertical {
         position: absolute;
-        top: 0;
-        left: 0;
         z-index: 2;
     }
 
     .rulerHorizontal {
+        top: 0;
+        left: 15px;
         width: 100%;
         height: 15px;
+        cursor: col-resize;
     }
 
     .rulerVertical {
+        top: 15px;
+        left: 0;
         width: 15px;
         height: 100%;
+        cursor: row-resize;
     }
 }
 

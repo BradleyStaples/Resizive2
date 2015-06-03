@@ -617,15 +617,19 @@ code {
   background-repeat: no-repeat; }
   .rulers.showRulers .rulerHorizontal, .rulers.showRulers .rulerVertical {
     position: absolute;
-    top: 0;
-    left: 0;
     z-index: 2; }
   .rulers.showRulers .rulerHorizontal {
+    top: 0;
+    left: 15px;
     width: 100%;
-    height: 15px; }
+    height: 15px;
+    cursor: col-resize; }
   .rulers.showRulers .rulerVertical {
+    top: 15px;
+    left: 0;
     width: 15px;
-    height: 100%; }
+    height: 100%;
+    cursor: row-resize; }
 
 .stacked {
   display: inline-block;
