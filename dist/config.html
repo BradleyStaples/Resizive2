@@ -26,26 +26,42 @@
     <div class="page config"><a href="/" class="btn right">&lArr; Home</a>
       <h2 class="center">Resizive Config</h2>
       <form method="post" action="#" class="configForm">
-        <label>Increment Size in PX (Animation)
-          <input type="text" name="increment" class="integerOnly">
+        <label>Increment Size For Animation
+          <select name="animation_increment" class="leftSpace integerOnly">
+            <option value="20">Smaller</option>
+            <option value="35">Normal</option>
+            <option value="50">Larger</option>
+          </select>
         </label>
-        <label>Transition Duration in MS (Animation)
-          <input type="text" name="duration" class="integerOnly">
+        <label>Transition Duration For Animation
+          <select name="animation_duration" class="leftSpace integerOnly">
+            <option value="50">Slower</option>
+            <option value="75">Normal</option>
+            <option value="100">Faster</option>
+          </select>
         </label>
-        <label>Increment Size in PX (Button Press)
-          <input type="text" name="stepincrement" class="integerOnly">
+        <label>Increment Size For Button Press
+          <select name="step_increment" class="leftSpace integerOnly">
+            <option value="5">Smaller</option>
+            <option value="10">Normal</option>
+            <option value="20">Larger</option>
+          </select>
         </label>
-        <label>Transition Duration in MS (Button Press)
-          <input type="text" name="stepduration" class="integerOnly">
+        <label>Transition Duration For Button Press
+          <select name="step_duration" class="leftSpace integerOnly">
+            <option value="50">Slower</option>
+            <option value="100">Normal</option>
+            <option value="200">Faster</option>
+          </select>
         </label>
         <label>Show Scrollbars?
-          <input type="checkbox" name="scrollbars" class="scrollbars">
+          <input type="checkbox" name="scrollbars" class="leftSpace scrollbars">
         </label>
         <label>Show Rulers?
-          <input type="checkbox" name="rulers" class="rulers">
+          <input type="checkbox" name="rulers" class="leftSpace rulers">
         </label>
         <label>Snap To Increment?
-          <input type="checkbox" name="snap" class="snap">
+          <input type="checkbox" name="snap" class="leftSpace snap">
         </label>
         <input type="submit" class="btn submit">
         <div class="succes invisible">Your config values have been saved.</div>

@@ -1,7 +1,12 @@
+mixin select(name, values)
+    select.leftSpace.integerOnly(name=name)
+        each val in values
+            option(value=val.v)=val.t
+
 extends layout
 
 block content
-    mixin header('index')
+    +header('index')
 
     .page.config
         a.btn.right(href='/') &lArr; Home
@@ -9,26 +14,26 @@ block content
 
         form.configForm(method='post', action='#')
             label
-               | Increment Size in PX (Animation)
-               input.integerOnly(type='text', name='increment')
+               | Increment Size For Animation
+               +select('animation_increment', [{v:20, t:'Smaller'}, {v:35, t:'Normal'}, {v:50, t:'Larger'}])
             label
-               | Transition Duration in MS (Animation)
-               input.integerOnly(type='text', name='duration')
+               | Transition Duration For Animation
+               +select('animation_duration', [{v:50, t:'Slower'}, {v:75, t:'Normal'}, {v:100, t:'Faster'}])
             label
-               | Increment Size in PX (Button Press)
-               input.integerOnly(type='text', name='stepincrement')
+               | Increment Size For Button Press
+               +select('step_increment', [{v:5, t:'Smaller'}, {v:10, t:'Normal'}, {v:20, t:'Larger'}])
             label
-               | Transition Duration in MS (Button Press)
-               input.integerOnly(type='text', name='stepduration')
+               | Transition Duration For Button Press
+               +select('step_duration', [{v:50, t:'Slower'}, {v:100, t:'Normal'}, {v:200, t:'Faster'}])
             label
                | Show Scrollbars?
-               input.scrollbars(type='checkbox', name='scrollbars')
+               input.leftSpace.scrollbars(type='checkbox', name='scrollbars')
             label
                | Show Rulers?
-               input.rulers(type='checkbox', name='rulers')
+               input.leftSpace.rulers(type='checkbox', name='rulers')
             label
                | Snap To Increment?
-               input.snap(type='checkbox', name='snap')
+               input.leftSpace.snap(type='checkbox', name='snap')
             input.btn.submit(type='submit')
             .succes.invisible Your config values have been saved.
 
