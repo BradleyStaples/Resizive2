@@ -59,8 +59,8 @@ Resizive.prototype.setupDragToResize = function () {
                 new_width = Math.round(new_width / increment) * increment;
                 new_height = Math.round(new_height / increment) * increment;
             }
-            this.updateWidth(new_width);
-            this.updateHeight(new_height);
+            this.syncWidth(new_width, true);
+            this.syncHeight(new_height, true);
             this.updateUri();
         }.bind(this)
     });
@@ -119,18 +119,28 @@ Resizive.prototype.setBindings = function () {
     this.elements.body.on('click', this.selectors.resume_button, this.resume.bind(this));
     this.elements.body.on('click', this.selectors.right_button, this.right.bind(this));
     this.elements.body.on('click', this.selectors.left_button, this.left.bind(this));
-    this.elements.body.on('click', this.selectors.upButton, this.up.bind(this));
+    this.elements.body.on('click', this.selectors.up_button, this.up.bind(this));
     this.elements.body.on('click', this.selectors.down_button, this.down.bind(this));
     this.elements.body.on('click', this.selectors.refresh_button, this.refresh.bind(this));
     this.elements.body.on('click', this.selectors.rorate_button, this.rotate.bind(this));
 
-    this.elements.body.on('blur', this.selectors.show_width, this.setWidth.bind(this));
+    this.elements.body.on('blur', this.selectors.show_width, this.determineWidth.bind(this));
     this.elements.body.on('keydown', this.selectors.show_width, function (event) {
         event.stopPropagation();
 
         if (event.which === this.config.enter_key) {
             event.preventDefault();
             this.elements.show_width.blur();
+        }
+    }.bind(this));
+
+    this.elements.body.on('blur', this.selectors.show_height, this.determineHeight.bind(this));
+    this.elements.body.on('keydown', this.selectors.show_height, function (event) {
+        event.stopPropagation();
+
+        if (event.which === this.config.enter_key) {
+            event.preventDefault();
+            this.elements.show_height.blur();
         }
     }.bind(this));
 };
@@ -192,10 +202,10 @@ Resizive.prototype.getSiteUrlFromQueryString = function () {
 Resizive.prototype.setDimensionsFromQueryString = function () {
     var query_object = this.getQueryStringObject();
     if (query_object.hasOwnProperty('width') && !isNaN(query_object.width)) {
-        this.updateWidth(query_object.width);
+        this.syncWidth(query_object.width, true);
     }
     if (query_object.hasOwnProperty('height') && !isNaN(query_object.height)) {
-        this.updateHeight(query_object.height);
+        this.syncHeight(query_object.height, true);
     }
 };
 
@@ -215,19 +225,21 @@ Resizive.prototype.getQueryStringObject = function () {
 };
 
 Resizive.prototype.animator = function (duration) {
+    var width = this.getCurrentWidth();
+    var height = this.getCurrentHeight();
     this.elements.container.animate({
-        width: this.config.current_width,
-        height: this.config.current_height
+        width: width,
+        height: height
     }, duration, function () {
-        this.elements.show_width.val(this.config.current_width);
-        this.elements.show_height.val(this.config.current_height);
+        this.setCurrentWidth(width, true);
+        this.setCurrentHeight(height, true);
     }.bind(this));
     this.updateUri();
 };
 
 Resizive.prototype.updateUri = function () {
-    var hash = '#width=' + encodeURIComponent(this.config.current_width);
-    hash += '&height=' + encodeURIComponent(this.config.current_height);
+    var hash = '#width=' + encodeURIComponent(this.getCurrentWidth());
+    hash += '&height=' + encodeURIComponent(this.getCurrentHeight());
     window.location.hash = hash;
 };
 
@@ -241,14 +253,17 @@ Resizive.prototype.keepInBounds = function (reset, direction, is_animation) {
         max_height = this.config.max_height_animation;
     }
 
+    var width = this.getCurrentWidth();
+    var height = this.getCurrentHeight();
+
     if (direction === 'horizontal' || direction === 'both') {
-        if (this.config.current_width > max_width) {
-            this.config.current_width = max_width;
+        if (width > max_width) {
+            this.setCurrentWidth(max_width);
             if (reset) {
                 this.config.horizontal_direction *= -1;
             }
-        } else if (this.config.current_width < this.config.min_width) {
-            this.config.current_width = this.config.min_width;
+        } else if (width < this.config.min_width) {
+            this.setCurrentWidth(this.config.min_width);
             if (reset) {
                 this.config.horizontal_direction *= -1;
             }
@@ -256,13 +271,13 @@ Resizive.prototype.keepInBounds = function (reset, direction, is_animation) {
     }
 
     if (direction === 'vertical' || direction === 'both') {
-        if (this.config.current_height > max_height) {
-            this.config.current_height = max_height;
+        if (height > max_height) {
+            this.setCurrentHeight(max_height);
             if (reset) {
                 this.config.vertical_direction *= -1;
             }
-        } else if (this.config.current_height < this.config.min_height) {
-            this.config.current_height = this.config.min_height;
+        } else if (height < this.config.min_height) {
+            this.setCurrentHeight(this.config.min_height);
             if (reset) {
                 this.config.vertical_direction *= -1;
             }
@@ -271,19 +286,21 @@ Resizive.prototype.keepInBounds = function (reset, direction, is_animation) {
 };
 
 Resizive.prototype.resizeHorizontally = function (adjustment, duration, reset, is_animation) {
-    var starting_width = this.config.current_width;
-    this.config.current_width += adjustment * this.config.horizontal_direction;
+    var starting_width = this.getCurrentWidth();
+    var new_width = starting_width + adjustment * this.config.horizontal_direction;
+    this.setCurrentWidth(new_width);
     this.keepInBounds(reset, 'horizontal', is_animation);
-    if (starting_width !== this.config.current_width) {
+    if (starting_width !== this.getCurrentWidth()) {
         this.animator(duration);
     }
 };
 
 Resizive.prototype.resizeVertically = function (adjustment, duration, reset, is_animation) {
-    var starting_height = this.config.current_height;
-    this.config.current_height += adjustment * this.config.vertical_direction;
+    var starting_height = this.getCurrentHeight();
+    var new_height = starting_height + adjustment * this.config.vertical_direction;
+    this.setCurrentHeight(new_height);
     this.keepInBounds(reset, 'vertical', is_animation);
-    if (starting_height !== this.config.current_height) {
+    if (starting_height !== this.getCurrentHeight()) {
         this.animator(duration);
     }
 };
@@ -299,25 +316,51 @@ Resizive.prototype.resize = function (direction, duration_type, size_type, is_an
     }
 };
 
-Resizive.prototype.setWidth = function () {
-    var px = this.elements.show_width.val();
-    var starting_width = this.config.current_width;
+Resizive.prototype.getCurrentWidth = function (from_input) {
+    if (from_input) {
+        return this.elements.show_width.val();
+    }
+    return this.config.current_width;
+};
 
-    if (isNaN(px)) {
-        this.elements.show_width.val(this.config.current_width);
+Resizive.prototype.setCurrentWidth = function (current_width, to_input) {
+    if (to_input) {
+        this.elements.show_width.val(current_width);
         return;
     }
-    this.config.current_width = parseInt(px, 10);
+    this.config.current_width = current_width;
+};
 
-    if (this.config.current_width < starting_width) {
+Resizive.prototype.determineWidth = function () {
+    var px = this.getCurrentWidth(true);
+    var starting_width = this.getCurrentWidth();
+
+    if (isNaN(px)) {
+        this.syncWidth(starting_width, true);
+        return;
+    }
+    this.syncWidth(px, false);
+
+    var new_width = this.getCurrentWidth();
+    // check current width again to make sure direction didn't change
+    if (new_width < starting_width) {
         this.updateDirection(-1, null);
     } else {
         this.updateDirection(+1, null);
     }
     this.keepInBounds(false, 'horizontal', false);
 
-    if (starting_width !== this.config.current_width) {
+    if (starting_width !== new_width) {
         this.animator(this.config.animation_duration);
+    }
+};
+
+Resizive.prototype.syncWidth = function (new_width, update_input) {
+    new_width = parseInt(new_width, 10);
+    this.setCurrentWidth(new_width);
+
+    if (update_input) {
+        this.setCurrentWidth(new_width, true);
     }
 };
 
@@ -331,18 +374,51 @@ Resizive.prototype.updatemax_width = function () {
     this.config.max_width = $(window).width();
 };
 
-// make into syncWidth, with option to sync to: uri, container.width(), or current_width
-Resizive.prototype.updateWidth = function (new_width) {
-    new_width = parseInt(new_width, 10);
-    this.config.current_width = new_width;
-    this.elements.show_width.val(new_width);
+Resizive.prototype.getCurrentHeight = function (from_input) {
+    if (from_input) {
+        return this.elements.show_height.val();
+    }
+    return this.config.current_height;
 };
 
-// make into syncHeight, with option to sync to: uri, container.height(), or current_height
-Resizive.prototype.updateHeight = function (new_height) {
+Resizive.prototype.setCurrentHeight = function (current_height, to_input) {
+    if (to_input) {
+        this.elements.show_height.val(current_height);
+        return;
+    }
+    this.config.current_height = current_height;
+};
+
+Resizive.prototype.determineHeight = function () {
+    var px = this.getCurrentHeight(true);
+    var starting_height = this.getCurrentHeight();
+
+    if (isNaN(px)) {
+        this.syncHeight(starting_height, true);
+        return;
+    }
+    this.syncHeight(px, false);
+    var new_height = this.getCurrentHeight();
+
+    if (new_height < starting_height) {
+        this.updateDirection(null, -1);
+    } else {
+        this.updateDirection(null, +1);
+    }
+    this.keepInBounds(false, 'vertical', false);
+
+    if (starting_height !== new_height) {
+        this.animator(this.config.animation_duration);
+    }
+};
+
+Resizive.prototype.syncHeight = function (new_height, update_input) {
     new_height = parseInt(new_height, 10);
-    this.config.current_height = new_height;
-    this.elements.show_height.val(new_height);
+    this.setCurrentHeight(new_height);
+
+    if (update_input) {
+        this.setCurrentHeight(new_height, true);
+    }
 };
 
 Resizive.prototype.setState = function (is_resizing) {
@@ -387,7 +463,7 @@ Resizive.prototype.pause = function () {
     this.setState(false);
     this.elements.body.addClass(this.config.class_pause).stop(true, true);
     clearInterval(this.config.timer);
-    this.updateWidth(this.config.current_width);
+    this.syncWidth(this.getCurrentWidth(), true);
 };
 
 Resizive.prototype.left = function () {
@@ -438,20 +514,23 @@ Resizive.prototype.refresh = function () {
 };
 
 Resizive.prototype.rotate = function () {
-    var new_width = this.config.current_height;
-    var new_height = this.config.current_width;
-    this.updateWidth(new_width);
-    this.updateHeight(new_height);
+    var new_width = this.getCurrentHeight();
+    var new_height = this.getCurrentWidth();
+    this.syncWidth(new_width, true);
+    this.syncHeight(new_height, true);
+    this.animator(this.config.animation_duration);
 };
 
 Resizive.prototype.setWidthByRuler = function (event) {
     var left = event.offsetX + 1; // why is this 1 short?
-    this.updateWidth(left);
+    this.syncWidth(left, true);
+    this.animator(this.config.animation_duration);
 };
 
 Resizive.prototype.setHeightByRuler = function (event) {
     var top = event.offsetY + 11; // why is this 11 short?
-    this.updateHeight(top);
+    this.syncHeight(top, true);
+    this.animator(this.config.animation_duration);
 };
 
 Resizive.prototype.listenForRulersClick = function () {
