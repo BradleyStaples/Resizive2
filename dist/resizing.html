@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta author="Bradley Staples">
+    <meta description="Enables easier detection of content-based breakpoints for media queries in regards to responsively designed fluid-width websites.">
+    <meta viewport="width=device-width, initial-scale=1.0">
+    <link rel="image_src" href="/images/resizive.png">
+    <link rel="stylesheet" href="/stylesheets/resizive.css">
+    <link rel="canonical" href="http://resizive.com">
+    <link rel="shortcut" href="/favicon.ico">
+  </head>
+  <body>
+    <header class="header">
+      <div class="titleContainer">
+        <h1 title="Resize Responsive Websites" class="siteTitle"><a href="/">Resizive</a></h1>
+      </div>
+      <div class="dataEntry leftSpace">
+        <div class="buttonRow leftSpace">
+          <button class="btn btnStart"><span>S</span>tart</button>
+          <button class="btn btnResume hidden"><span>R</span>esume</button>
+          <button class="btn btnPause"><span>P</span>ause</button>
+          <button class="btn btnLeft leftSpace"><span>&larr;</span></button>
+          <div class="stacked">
+            <button class="btn btnUp halfHeight"><span>&uarr;</span></button>
+            <button class="btn btnDown halfHeight"><span>&darr;</span></button>
+          </div>
+          <button class="btn btnRight"><span>&rarr;</span></button>
+        </div>
+        <input type="text" title="Set A Specific Width (PX)" class="showWidth leftSpace"/>x
+        <input type="text" title="Set A Specific Width (PX)" class="showHeight leftSpace"/>
+        <button class="btn btnRefresh leftSpace">
+          <div class="text fontLarge">&#8635;</div>
+        </button>
+        <button class="btn btnRotate leftSpace">Rotate</button>
+        <button data-dropdown="phones" class="btn btnPhones leftSpace">Phones</button>
+        <button data-dropdown="tablets" class="btn btnTablets leftSpace">Tablets</button>
+        <ul class="deviceList hidden phones">
+          <li data-dimensions="414|736" class="device clearFix"><span class="size right">414&times;736</span><span class="name">Apple iPhone 6+</span></li>
+          <li data-dimensions="375|667" class="device clearFix"><span class="size right">375&times;667</span><span class="name">Apple iPhone 6</span></li>
+          <li data-dimensions="320|568" class="device clearFix"><span class="size right">320&times;568</span><span class="name">Apple iPhone 5</span></li>
+          <li data-dimensions="320|480" class="device clearFix"><span class="size right">320&times;480</span><span class="name">Apple iPhone 4, 3</span></li>
+          <li data-dimensions="320|568" class="device clearFix"><span class="size right">320&times;568</span><span class="name">Apple iPod Touch</span></li>
+          <li data-dimensions="360|640" class="device clearFix"><span class="size right">360&times;640</span><span class="name">Samsung Galaxy Note 3, 2</span></li>
+          <li data-dimensions="400|640" class="device clearFix"><span class="size right">400&times;640</span><span class="name">Samsung Galaxy Note</span></li>
+          <li data-dimensions="360|640" class="device clearFix"><span class="size right">360&times;640</span><span class="name">Samsung Galaxy S5, S4, S3</span></li>
+          <li data-dimensions="360|640" class="device clearFix"><span class="size right">360&times;640</span><span class="name">Samsung Galaxy S4 mini</span></li>
+          <li data-dimensions="320|533" class="device clearFix"><span class="size right">320&times;533</span><span class="name">Samsung Galaxy S3 mini, S2, S</span></li>
+          <li data-dimensions="360|600" class="device clearFix"><span class="size right">360&times;600</span><span class="name">Samsung Galaxy Nexus</span></li>
+          <li data-dimensions="360|640" class="device clearFix"><span class="size right">360&times;640</span><span class="name">HTC One, X, X+</span></li>
+          <li data-dimensions="480|800" class="device clearFix"><span class="size right">480&times;800</span><span class="name">HTC Desire, Desire X</span></li>
+          <li data-dimensions="360|640" class="device clearFix"><span class="size right">360&times;640</span><span class="name">HTC One M9</span></li>
+          <li data-dimensions="320|480" class="device clearFix"><span class="size right">320&times;480</span><span class="name">HTC 8X</span></li>
+          <li data-dimensions="360|640" class="device clearFix"><span class="size right">360&times;640</span><span class="name">HTC Evo 3D</span></li>
+          <li data-dimensions="412|690" class="device clearFix"><span class="size right">412&times;690</span><span class="name">Motorola Nexus 6</span></li>
+          <li data-dimensions="360|640" class="device clearFix"><span class="size right">360&times;640</span><span class="name">LG G3</span></li>
+          <li data-dimensions="384|640" class="device clearFix"><span class="size right">384&times;640</span><span class="name">LG Optimus G</span></li>
+          <li data-dimensions="424|753" class="device clearFix"><span class="size right">424&times;753</span><span class="name">LG Optimus</span></li>
+          <li data-dimensions="360|640" class="device clearFix"><span class="size right">360&times;640</span><span class="name">LG Nexus 5</span></li>
+          <li data-dimensions="384|640" class="device clearFix"><span class="size right">384&times;640</span><span class="name">LG Nexus 4</span></li>
+          <li data-dimensions="320|533" class="device clearFix"><span class="size right">320&times;533</span><span class="name">Nokia Lumia (all)</span></li>
+          <li data-dimensions="360|640" class="device clearFix"><span class="size right">360&times;640</span><span class="name">Sony Xperia Z, S, P</span></li>
+          <li data-dimensions="360|598" class="device clearFix"><span class="size right">360&times;598</span><span class="name">Sony Xperia Z3</span></li>
+          <li data-dimensions="390|695" class="device clearFix"><span class="size right">390&times;695</span><span class="name">Blackberry Leap</span></li>
+          <li data-dimensions="504|504" class="device clearFix"><span class="size right">504&times;504</span><span class="name">Blackberry Passport</span></li>
+          <li data-dimensions="390|390" class="device clearFix"><span class="size right">390&times;390</span><span class="name">Blackberry Classic</span></li>
+          <li data-dimensions="346|346" class="device clearFix"><span class="size right">346&times;346</span><span class="name">Blackberry Q10</span></li>
+          <li data-dimensions="360|640" class="device clearFix"><span class="size right">360&times;640</span><span class="name">Blackberry Z30</span></li>
+          <li data-dimensions="384|640" class="device clearFix"><span class="size right">384&times;640</span><span class="name">Blackberry Z10</span></li>
+          <li data-dimensions="360|480" class="device clearFix"><span class="size right">360&times;480</span><span class="name">Blackberry Torch 9800</span></li>
+          <li data-dimensions="320|480" class="device clearFix"><span class="size right">320&times;480</span><span class="name">ZTE Open (Firefox OS)</span></li>
+        </ul>
+        <ul class="deviceList hidden tablets">
+          <li data-dimensions="768|1024" class="device clearFix"><span class="size right">768&times;1024</span><span class="name">Apple iPad (all)</span></li>
+          <li data-dimensions="768|1366" class="device clearFix"><span class="size right">768&times;1366</span><span class="name">Microsoft Surface</span></li>
+          <li data-dimensions="720|1280" class="device clearFix"><span class="size right">720&times;1280</span><span class="name">Microsoft Surface Pro</span></li>
+          <li data-dimensions="533|853" class="device clearFix"><span class="size right">533&times;853</span><span class="name">Kindle Fire HD 7&quot;</span></li>
+          <li data-dimensions="800|1280" class="device clearFix"><span class="size right">800&times;1280</span><span class="name">Kindle Fire HD 8.9&quot;</span></li>
+          <li data-dimensions="600|1024" class="device clearFix"><span class="size right">600&times;1024</span><span class="name">Kindle Fire</span></li>
+          <li data-dimensions="800|1280" class="device clearFix"><span class="size right">800&times;1280</span><span class="name">Samsung Galaxy Tab 3, 2, (10&quot;)</span></li>
+          <li data-dimensions="800|1280" class="device clearFix"><span class="size right">800&times;1280</span><span class="name">Samsung Galaxy Tab (8.9&quot;)</span></li>
+          <li data-dimensions="600|1024" class="device clearFix"><span class="size right">600&times;1024</span><span class="name">Samsung Galaxy Tab 2 (7&quot;)</span></li>
+          <li data-dimensions="800|1280" class="device clearFix"><span class="size right">800&times;1280</span><span class="name">Samsung Nexus 10</span></li>
+          <li data-dimensions="600|960" class="device clearFix"><span class="size right">600&times;960</span><span class="name">Asus Nexus 7 (v2)</span></li>
+          <li data-dimensions="600|1024" class="device clearFix"><span class="size right">600&times;1024</span><span class="name">Blackberry Playbook</span></li>
+          <li data-dimensions="600|960" class="device clearFix"><span class="size right">600&times;960</span><span class="name">LG G Pad 8.3</span></li>
+          <li data-dimensions="600|960" class="device clearFix"><span class="size right">600&times;960</span><span class="name">Asus Nexus 7 (v1)</span></li>
+          <li data-dimensions="604|966" class="device clearFix"><span class="size right">604&times;966</span><span class="name">Asus Nexus 7 (v2)</span></li>
+          <li data-dimensions="768|1024" class="device clearFix"><span class="size right">768&times;1024</span><span class="name">HTC Nexus 9</span></li>
+          <li data-dimensions="604|966" class="device clearFix"><span class="size right">604&times;966</span><span class="name">Google Nexus 7</span></li>
+        </ul>
+      </div>
+    </header>
+    <div class="rulers">
+      <div class="rulerHorizontal"></div>
+      <div class="rulerVertical"></div>
+      <div class="resizerContainer transitionable"><img src="/images/throbber.svg" width="48" height="48" class="loading">
+        <div class="frame">
+          <iframe src="undefined" height="100%" frameborder="0" class="resizer hidden"></iframe>
+        </div>
+      </div>
+    </div>
+    <div id="dialogContainer"></div>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script>
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-31105536-1']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <script src="/javascripts/storage.js"></script>
+    <script src="/javascripts/config.js"></script>
+  </body>
+</html>

@@ -1,4 +1,4 @@
-mixin header(page_type)
+mixin header(page_type, device_sizes)
     header.header
         .titleContainer
             h1.siteTitle(title='Resize Responsive Websites')
@@ -37,8 +37,8 @@ mixin header(page_type)
                 button.btn.btnRotate.leftSpace Rotate
                 button.btn.btnPhones.leftSpace(data-dropdown='phones') Phones
                 button.btn.btnTablets.leftSpace(data-dropdown='tablets') Tablets
-                +deviceList('phones')
-                +deviceList('tablets')
+                +deviceList('phones', device_sizes)
+                +deviceList('tablets', device_sizes)
 
 mixin select(name, values)
     select.leftSpace.integerOnly(name=name)
@@ -52,8 +52,8 @@ mixin deviceSize(device)
         span.size.right!=size
         span.name=device.name
 
-mixin deviceList(device_type)
-    - devices = device_sizes[device_type]
+mixin deviceList(device_type, device_sizes)
+    - devices = device_sizes ? device_sizes[device_type] : []
     ul.deviceList.hidden(class='#{device_type}')
         each device in devices
             +deviceSize(device)

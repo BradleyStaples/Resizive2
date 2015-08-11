@@ -38,9 +38,13 @@ gulp.task('copy-favicon', function () {
 
 
 gulp.task('jade-to-html', function () {
+    var device_sizes = require('./lib/js/device_sizes');
     return gulp.src('./lib/views/*.jade')
         .pipe(jade({
-            pretty: true
+            pretty: true,
+            data: {
+                device_sizes: device_sizes
+            }
         }))
         .on('error', gutil.log)
         .pipe(gulp.dest('./dist/'));
