@@ -326,6 +326,13 @@ td, th {
 .right {
   float: right; }
 
+.clearFix:before {
+  content: ' ';
+  display: table; }
+
+.clearFix:after {
+  clear: both; }
+
 .center {
   text-align: center; }
 
@@ -637,6 +644,31 @@ code {
   -webkit-transform: rotate(90deg);
       -ms-transform: rotate(90deg);
           transform: rotate(90deg); }
+
+.deviceList {
+  position: absolute;
+  z-index: 10;
+  width: 310px;
+  margin: 0;
+  padding: 15px;
+  border: 1px solid #9ed2f5;
+  border-radius: 5px;
+  list-style: none;
+  background-color: #fff;
+  box-shadow: 1px 1px 2px #1099f5;
+  font-size: 13px; }
+  .deviceList .device {
+    cursor: pointer;
+    padding: 3px; }
+  .deviceList .device + .device {
+    border-top: 1px solid #bbb; }
+  .deviceList .name {
+    color: #59b8f8;
+    pointer-events: none; }
+  .deviceList .size {
+    font-family: monospace;
+    color: #555;
+    pointer-events: none; }
 
 .page {
   position: relative;

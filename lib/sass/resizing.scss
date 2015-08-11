@@ -106,3 +106,37 @@
 .btnRefresh .text {
     transform: rotate(90deg);
 }
+
+.deviceList {
+    position: absolute;
+    z-index: 10;
+    width: 310px;
+    margin: 0;
+    padding: $large_spacing;
+    border: 1px solid $light_blue;
+    border-radius: $small_spacing;
+    list-style: none;
+    background-color: $white;
+    box-shadow: 1px 1px 2px $dark_blue;
+    font-size: $font_small;
+
+    .device {
+        cursor: pointer;
+        padding: 3px;
+    }
+
+    .device + .device {
+         border-top: 1px solid $light_gray;
+    }
+
+    .name {
+        color: $blue;
+        pointer-events: none;
+    }
+
+    .size {
+        font-family: monospace;
+        color: $med_gray;
+        pointer-events: none;
+    }
+}

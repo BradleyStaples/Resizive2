@@ -96,7 +96,10 @@ Resizive.prototype.selectors = {
     up_button: '.btnUp',
     down_button: '.btnDown',
     refresh_button: '.btnRefresh',
-    rorate_button: '.btnRotate',
+    rotate_button: '.btnRotate',
+    phones_button: '.btnPhones',
+    tablets_button: '.btnTablets',
+    device_entry: '.device',
     show_width: '.showWidth',
     show_height: '.showHeight',
     container: '.resizerContainer',
@@ -127,7 +130,11 @@ Resizive.prototype.setBindings = function () {
     this.elements.body.on('click', this.selectors.up_button, this.up.bind(this));
     this.elements.body.on('click', this.selectors.down_button, this.down.bind(this));
     this.elements.body.on('click', this.selectors.refresh_button, this.refresh.bind(this));
-    this.elements.body.on('click', this.selectors.rorate_button, this.rotate.bind(this));
+    this.elements.body.on('click', this.selectors.rotate_button, this.rotate.bind(this));
+    this.elements.body.on('click', this.selectors.phones_button, this.showDropdown.bind(this, 'phones'));
+    this.elements.body.on('click', this.selectors.tablets_button, this.showDropdown.bind(this, 'tablets'));
+    this.elements.body.on('click', this.selectors.device_entry, this.setSizeByDevice.bind(this));
+
 
     this.elements.body.on('blur', this.selectors.show_width, this.determineWidth.bind(this));
     this.elements.body.on('keydown', this.selectors.show_width, function (event) {
@@ -184,7 +191,8 @@ Resizive.prototype.createConfig = function (url) {
         // need room for handle, so don't use 100% of window width
         current_width: window_width - handle_offset,
         max_width: 3000,
-        max_width_animation: window_width
+        max_width_animation: window_width,
+        dropdown: ''
     };
 };
 
@@ -545,4 +553,30 @@ Resizive.prototype.listenForRulersClick = function () {
     this.elements.body.on('click', this.selectors.horizontal_rulers, horizontal_func);
     var vertical_func = this.setHeightByRuler.bind(this);
     this.elements.body.on('click', this.selectors.vertical_rulers, vertical_func);
+};
+
+Resizive.prototype.showDropdown = function (dropdown_class, event) {
+    if (this.config.dropdown !== dropdown_class) {
+        this.closeDropdowns();
+    }
+    var offset = $(event.target).offset();
+    this.config.dropdown = dropdown_class;
+    $('.deviceList.' + dropdown_class)
+        .toggleClass('hidden')
+        .css({
+            top: offset.top + 35,
+            left: offset.left - 235
+        });
+};
+
+Resizive.prototype.closeDropdowns = function () {
+    $('.deviceList').addClass('hidden');
+};
+
+Resizive.prototype.setSizeByDevice = function (event) {
+    this.closeDropdowns();
+    var dimensions = $(event.target).data('dimensions').split('|');
+    this.syncWidth(dimensions[0], true);
+    this.syncHeight(dimensions[1], true);
+    this.animator(this.config.animation_duration);
 };

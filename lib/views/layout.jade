@@ -1,40 +1,4 @@
-mixin header(page_type)
-    header.header
-        .titleContainer
-            h1.siteTitle(title='Resize Responsive Websites')
-                a(href='/') Resizive
-        .dataEntry.leftSpace
-            if page_type == 'index'
-                form(method='get', action='/resizing')
-                    input.urlEntry(type='url', name='url', placeholder='Enter Website URL')
-                    button.btn.btn-load.leftSpace(type='submit') Go
-                    a.btn.fontLarge.leftSpace(href='/config', title='Set Config Data') &#9881;
-            if page_type == 'resizing'
-                .buttonRow.leftSpace
-                    button.btn.btnStart
-                        span S
-                        | tart
-                    button.btn.btnResume.hidden
-                        span R
-                        | esume
-                    button.btn.btnPause
-                        span P
-                        | ause
-                    button.btn.btnLeft.leftSpace
-                        span &larr;
-                    .stacked
-                        button.btn.btnUp.halfHeight
-                            span &uarr;
-                        button.btn.btnDown.halfHeight
-                            span &darr;
-                    button.btn.btnRight
-                        span &rarr;
-                input.showWidth.leftSpace(type='text', title='Set A Specific Width (PX)')
-                | x
-                input.showHeight.leftSpace(type='text', title='Set A Specific Width (PX)')
-                button.btn.btnRefresh.leftSpace
-                    .text.fontLarge &#8635;
-                button.btn.btnRotate.leftSpace Rotate
+include mixins
 
 doctype html
 html
@@ -50,6 +14,7 @@ html
         link(rel='shortcut', href='/favicon.ico')
     body
         block content
+        #dialogContainer
         script(src='https://code.jquery.com/jquery-2.1.4.min.js')
         script.
             var _gaq = _gaq || [];
