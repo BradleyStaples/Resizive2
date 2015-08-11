@@ -15,16 +15,16 @@ block content
         form.configForm(method='post', action='#')
             label
                | Increment Size For Animation
-               +select('animation_increment', [{v:20, t:'Smaller'}, {v:35, t:'Normal'}, {v:50, t:'Larger'}])
+               +select('animation_increment', [{v:20, t:'Smaller (20px)'}, {v:35, t:'Normal (35px)'}, {v:50, t:'Larger (50px)'}])
             label
                | Transition Duration For Animation
-               +select('animation_duration', [{v:50, t:'Slower'}, {v:75, t:'Normal'}, {v:100, t:'Faster'}])
+               +select('animation_duration', [{v:50, t:'Smaller (50ms)'}, {v:75, t:'Normal (75ms)'}, {v:100, t:'Larger (100ms)'}])
             label
                | Increment Size For Button Press
-               +select('step_increment', [{v:5, t:'Smaller'}, {v:10, t:'Normal'}, {v:20, t:'Larger'}])
+               +select('step_increment', [{v:5, t:'Smaller (5px)'}, {v:10, t:'Normal (10px)'}, {v:20, t:'Larger (20px)'}])
             label
                | Transition Duration For Button Press
-               +select('step_duration', [{v:50, t:'Slower'}, {v:100, t:'Normal'}, {v:200, t:'Faster'}])
+               +select('step_duration', [{v:50, t:'Smaller (50ms)'}, {v:100, t:'Normal (100ms)'}, {v:200, t:'Larger (200ms)'}])
             label
                | Show Scrollbars?
                input.leftSpace.scrollbars(type='checkbox', name='scrollbars')
