@@ -35,8 +35,8 @@ mixin header(page_type)
                 button.btn.btnRefresh.leftSpace
                     .text.fontLarge &#8635;
                 button.btn.btnRotate.leftSpace Rotate
-                button.btn.btnPhones.leftSpace Phones
-                button.btn.btnTablets.leftSpace Tablets
+                button.btn.btnPhones.leftSpace(data-dropdown='phones') Phones
+                button.btn.btnTablets.leftSpace(data-dropdown='tablets') Tablets
                 +deviceList('phones')
                 +deviceList('tablets')
 
