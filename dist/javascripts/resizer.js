@@ -36,6 +36,15 @@ Resizive.prototype.waitForIframeToLoad = function () {
     }.bind(this));
 };
 
+Resizive.prototype.snapToIncrement = function (value) {
+    if (!this.config.snap) {
+        return value;
+    }
+    // if snapping is enabled, round to nearest step increment
+    var increment = this.config.step_incrememnt;
+    return Math.round(value / increment) * increment;
+};
+
 Resizive.prototype.setupDragToResize = function () {
     this.elements.container.resizable({
         handles: 'e, s',
@@ -52,13 +61,9 @@ Resizive.prototype.setupDragToResize = function () {
             this.elements.resizer.css('pointer-events', 'auto');
             this.elements.container.addClass('transitionable');
             var new_width = this.elements.container.width();
+            new_width = this.snapToIncrement(new_width);
             var new_height = this.elements.container.height();
-            if (this.config.snap) {
-                // if snapping is enabled, round to nearest step increment
-                var increment = this.config.step_incrememnt;
-                new_width = Math.round(new_width / increment) * increment;
-                new_height = Math.round(new_height / increment) * increment;
-            }
+            new_height = this.snapToIncrement(new_height);
             this.syncWidth(new_width, true);
             this.syncHeight(new_height, true);
             this.updateUri();
@@ -75,7 +80,7 @@ Resizive.prototype.normalizeUrl = function (url) {
     }
 
     // make sure url has a protocol. it might be https, but pretend
-    // it's http if user doesn't enter any protocol
+    // it's http if user doesn't enter any protocol.
     if (url.indexOf('://') === -1) {
         url = 'http://' + url;
     }
@@ -523,12 +528,14 @@ Resizive.prototype.rotate = function () {
 
 Resizive.prototype.setWidthByRuler = function (event) {
     var left = event.offsetX + 1; // why is this 1 short?
+    left = this.snapToIncrement(left);
     this.syncWidth(left, true);
     this.animator(this.config.animation_duration);
 };
 
 Resizive.prototype.setHeightByRuler = function (event) {
     var top = event.offsetY + 11; // why is this 11 short?
+    top = this.snapToIncrement(top);
     this.syncHeight(top, true);
     this.animator(this.config.animation_duration);
 };
