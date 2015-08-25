@@ -11,7 +11,7 @@
 
     // coerce strings back to boolean from strings
     var coerceBoolean = function (value) {
-        return value === 'true';
+        return value === 'true' || value === true;
     };
 
     // methods to coerce values from strings back into sane values
